@@ -6,7 +6,7 @@ public class SceneLoader : MonoBehaviour
 {
     public void LoadSceneByName()
     {
-        SceneManager.LoadScene("Scenes/SampleScene");
+        SceneManager.LoadScene("Scenes/FirstFloor");
     }
 }
 
