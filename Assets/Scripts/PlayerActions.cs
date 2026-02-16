@@ -18,6 +18,7 @@ public class PlayerActions : MonoBehaviour
     public int maxHP = 20;
     public int projectileDamage = 2;
     public float projectileCooldown = 1f; //Basically just rate of fire, but better suited to be called "cooldown" as a variable.
+    public int projectileRange = 5;
     public float moveSpeed = 5f;
     
 
