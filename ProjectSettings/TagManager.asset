@@ -41,5 +41,29 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 494942739
+    locked: 0
+  - name: Doors
+    uniqueID: 3107677191
+    locked: 0
+  - name: Objects & Map Items
+    uniqueID: 481784019
+    locked: 0
+  - name: Item Sprites
+    uniqueID: 2772771479
+    locked: 0
+  - name: Living Things
+    uniqueID: 3180920927
+    locked: 0
+  - name: Projectiles
+    uniqueID: 2170395369
+    locked: 0
+  - name: UI
+    uniqueID: 2340928291
+    locked: 0
+  - name: Pause
+    uniqueID: 329040539
+    locked: 0
   m_RenderingLayers:
   - Default
