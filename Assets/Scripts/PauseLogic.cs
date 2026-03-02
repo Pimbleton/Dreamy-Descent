@@ -1,0 +1,38 @@
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
+public class PauseLogic : MonoBehaviour {
+    public GameObject PauseMenu;
+    public Button ResumeButton;
+    public Button TitleButton;
+    public Button DesktopButton;
+    public bool isPaused = false;
+
+    void Start() {
+        PauseMenu.SetActive(false);
+        ResumeButton.onClick.AddListener(() => {isPaused = false; PressResumeButton();});
+        TitleButton.onClick.AddListener(() => {isPaused = false;});
+        DesktopButton.onClick.AddListener(() => {isPaused = false;});
+    }
+
+    void Update(){
+        if (Keyboard.current.escapeKey.wasPressedThisFrame) {
+            isPaused = !isPaused;
+        }
+
+        if (!isPaused) {
+            PauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+        }
+        else {
+            PauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
+
+    void PressResumeButton() {
+        Time.timeScale = 1f;
+        PauseMenu.SetActive(false);
+    }
+}
