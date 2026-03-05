@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour {
-    private float projectileDamage;
     private float projectileSpeed;
     private float projectileRange;
     private float projectileCooldown;
@@ -10,7 +9,6 @@ public class PlayerAttack : MonoBehaviour {
     public GameObject PlayerProjectilePrefab;
 
     void Start() {
-        projectileDamage = GetComponent<PlayerStats>().projectileDamage;
         projectileSpeed = GetComponent<PlayerStats>().projectileSpeed;
         projectileRange = GetComponent<PlayerStats>().projectileRange;
         projectileCooldown = GetComponent<PlayerStats>().projectileCooldown;

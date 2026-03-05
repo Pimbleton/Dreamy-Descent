@@ -69,11 +69,5 @@ TagManager:
   - name: Projectiles
     uniqueID: 2170395369
     locked: 0
-  - name: UI
-    uniqueID: 2340928291
-    locked: 0
-  - name: Pause
-    uniqueID: 329040539
-    locked: 0
   m_RenderingLayers:
   - Default
