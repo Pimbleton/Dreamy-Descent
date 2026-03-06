@@ -975,7 +975,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000e99a5d815f0099bd133a801d07643bb9d370b71c972245a523bb878b9bc29c13
+  m_ApplyToSortingLayers: 00000000e99a5d815f0099bd133a801d07643bb9d370b71c972245a5
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1925,6 +1925,7 @@ GameObject:
   - component: {fileID: 1447548069}
   - component: {fileID: 1447548072}
   - component: {fileID: 1447548071}
+  - component: {fileID: 1447548073}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2017,7 +2018,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.66089904
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -2079,8 +2080,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.64, y: 1.17}
+  m_Offset: {x: -0.0021077907, y: 0}
+  m_Size: {x: 0.5514718, y: 1.17}
   m_Direction: 0
 --- !u!114 &1447548071
 MonoBehaviour:
@@ -2099,10 +2100,12 @@ MonoBehaviour:
   deceleration: 100
   HP: 20
   maxHP: 20
-  projectileDamage: 2
-  projectileSpeed: 5
-  projectileRange: 1
   projectileCooldown: 0.5
+  projectileDamage: 2
+  projectileRange: 1
+  projectileSpeed: 5
+  projectileKnockback: 5
+  invincibilityDuration: 2
 --- !u!114 &1447548072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2116,6 +2119,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   myRigidbody: {fileID: 1447548068}
+--- !u!114 &1447548073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447548065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec63367a8fe069e4abd7cece130c4232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHurt
+  flashSpeed: 20
 --- !u!1 &152556026275303667 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6435900632776577544, guid: f21689bf88e04204db55989b4a7c71b9, type: 3}
@@ -2908,6 +2924,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0680962350468304c8b0533ccf8935a0, type: 3}
+--- !u!1001 &7741186109726032044
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6557987248119820420, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.1684623
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557987248119820420, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.1167188
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557987248119820420, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557987248119820420, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557987248119820420, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557987248119820420, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557987248119820420, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557987248119820420, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557987248119820420, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557987248119820420, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138763860791806326, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
+      propertyPath: m_Name
+      value: Swirlo
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
 --- !u!1001 &8719959735766974253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3035,3 +3108,4 @@ SceneRoots:
   - {fileID: 1175449153}
   - {fileID: 1447548066}
   - {fileID: 1375458824}
+  - {fileID: 7741186109726032044}
