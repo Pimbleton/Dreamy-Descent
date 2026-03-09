@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ChaserLogic : MonoBehaviour
 {
-    public int contact_damage = 1;
+    public int damage = 1;
     public float speed = 1f;
     public float health = 10f;
     public Rigidbody2D myRigidBody;
@@ -39,7 +39,7 @@ public class ChaserLogic : MonoBehaviour
         health -= damage;
 
         if (health <= 0) {
-            Die();
+            GetComponent<DeathHandler>().Die();
         }
 
         knockbackTimer = knockbackDuration;
@@ -49,16 +49,12 @@ public class ChaserLogic : MonoBehaviour
     }
 
     void OnCollisionEnter2D (Collision2D other) {
-        if (other.gameObject.CompareTag("Player")) { other.gameObject.GetComponent<PlayerHurt>().PlayerTakeDamage(contact_damage); }
+        if (other.gameObject.CompareTag("Player")) { other.gameObject.GetComponent<PlayerHurt>().PlayerTakeDamage(damage); }
     }
 
     void OnCollisionStay2D (Collision2D other) {
         if (other.gameObject.CompareTag("Player")) { 
-            other.gameObject.GetComponent<PlayerHurt>().PlayerTakeDamage(contact_damage); 
+            other.gameObject.GetComponent<PlayerHurt>().PlayerTakeDamage(damage); 
         }
     }
-
-    void Die() {
-        Destroy(gameObject);
-    }   
 }

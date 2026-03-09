@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2685040777154402144}
   - component: {fileID: 6455737749147388874}
   - component: {fileID: 6453509799341422014}
+  - component: {fileID: 4343379375742005744}
   m_Layer: 0
   m_Name: Swirlo
   m_TagString: Enemy
@@ -28,9 +29,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8138763860791806326}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.1684623, y: 3.1167188, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -24.0418, y: 13.4699, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -168,8 +169,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f30552f1818f6448a13074fa53557b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicEnemy
-  contact_damage: 1
+  damage: 1
   speed: 4
   health: 10
   myRigidBody: {fileID: 2685040777154402144}
   knockbackDuration: 0.2
+--- !u!114 &4343379375742005744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138763860791806326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fccdd674e0c6084cab2b6d5eddc05f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathHandler
