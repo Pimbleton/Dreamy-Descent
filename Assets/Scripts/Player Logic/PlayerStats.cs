@@ -7,8 +7,8 @@ public class PlayerStats : MonoBehaviour {
     public float deceleration = 100f;
 
     //Player Health
-    public int HP = 6;
-    public int maxHP = 6;
+    public int HP = 5;
+    public int maxHP = 5;
 
     // Player Projectile Stats
     public float projectileCooldown = 0.5f;

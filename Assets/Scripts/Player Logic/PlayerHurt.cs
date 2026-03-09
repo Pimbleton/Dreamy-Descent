@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerHurt : MonoBehaviour {
     private PlayerStats stats;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D myRigidBody;
+    public HealthBar healthBar;
 
     private float invincibilityDuration;
     private bool isInvincible = false;
@@ -12,6 +14,7 @@ public class PlayerHurt : MonoBehaviour {
     void Start() {
         stats = GetComponent<PlayerStats>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        myRigidBody = GetComponent<Rigidbody2D>();
         invincibilityDuration = stats.invincibilityDuration;
     }
 
@@ -33,9 +36,10 @@ public class PlayerHurt : MonoBehaviour {
         if (!isInvincible) {
             stats.HP -= damage;
             isInvincible = true;
+            healthBar.UpdateHealthBar();
 
             if (stats.HP <= 0) {
-                Die();
+                GetComponent<DeathHandler>().Die();
             }
         }
     }
@@ -44,10 +48,5 @@ public class PlayerHurt : MonoBehaviour {
         Color c = spriteRenderer.color;
         c.a = alpha;
         spriteRenderer.color = c;
-    }
-    
-    private void Die() {
-        Debug.Log("Player has died.");
-        Destroy(gameObject);
     }
 }
