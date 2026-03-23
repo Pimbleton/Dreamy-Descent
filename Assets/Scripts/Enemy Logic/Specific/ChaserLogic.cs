@@ -39,7 +39,7 @@ public class ChaserLogic : MonoBehaviour
         health -= damage;
 
         if (health <= 0) {
-            GetComponent<DeathHandler>().Die();
+            Destroy(gameObject);
         }
 
         knockbackTimer = knockbackDuration;

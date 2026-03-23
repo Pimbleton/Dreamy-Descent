@@ -2,15 +2,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour {
-    private float moveSpeed;
-    private float acceleration;
-    private float deceleration;
+    private PlayerStats playerStats;
     public Rigidbody2D myRigidbody;
     
     void Start() {
-        moveSpeed = GetComponent<PlayerStats>().moveSpeed;
-        acceleration = GetComponent<PlayerStats>().acceleration;
-        deceleration = GetComponent<PlayerStats>().deceleration;
+        playerStats = GetComponent<PlayerStats>();
     }
     
     void FixedUpdate() {
@@ -22,9 +18,9 @@ public class PlayerMovement : MonoBehaviour {
             Keyboard.current.dKey.IsPressed() ? 1 : 0 - (Keyboard.current.aKey.IsPressed() ? 1 : 0), 
             Keyboard.current.wKey.IsPressed() ? 1 : 0 - (Keyboard.current.sKey.IsPressed() ? 1 : 0)).normalized;
 
-        Vector2 targetVelocity = movementVector * moveSpeed;
+        Vector2 targetVelocity = movementVector * playerStats.moveSpeed;
 
-        float accelerationThreshold = movementVector.magnitude > 0 ? acceleration : deceleration;
+        float accelerationThreshold = movementVector.magnitude > 0 ? playerStats.acceleration : playerStats.deceleration;
 
         myRigidbody.linearVelocity = Vector2.MoveTowards(myRigidbody.linearVelocity, targetVelocity, accelerationThreshold * Time.fixedDeltaTime);
     }

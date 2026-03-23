@@ -3,32 +3,44 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour {
+    public static HealthBar Instance;
+
     public Image healthBar;
-    public PlayerStats playerStats;
+    private PlayerStats playerStats;
     public GameObject player;
     private string folderPath = "HealthBars/HealthBar";
     
+    void Awake() {
+        Instance = this;
+    }
+
     void Start() {
-        playerStats = player.GetComponent<PlayerStats>();
+        if (player != null) {
+            playerStats = player.GetComponent<PlayerStats>();
+        }
+        
+        UpdateHealthBar();
+    }
+
+    public void updateHPAndMaxHP() {
         UpdateHealthBar();
     }
 
     public void UpdateHealthBar() {
-    if (playerStats == null) {
-        Debug.LogError("HealthBar: playerStats is null! Is the script on the Player?");
-        return; 
-    }
+        if (playerStats == null) {
+            return;
+        }
 
-    // 2. Check if you assigned the UI Image in the Inspector
-    if (healthBar == null) {
-        Debug.LogError("HealthBar: healthBar Image is not assigned in the Inspector!");
-        return;
-    }
+        int health = playerStats.HP;
+        int maxHealth = playerStats.maxHP;
 
-        string fullPath = folderPath + playerStats.maxHP + "_" + playerStats.HP;
+        string fullPath = folderPath + maxHealth + "_" + health;
         Sprite LoadedSprite = Resources.Load<Sprite>(fullPath);
-        Debug.Log("Loading sprite from path: " + fullPath);
-        healthBar.sprite = LoadedSprite;
+    
+        if (LoadedSprite != null){
+            healthBar.sprite = LoadedSprite;
+        } else {
+            Debug.LogError("Health bar sprite not found at path: " + fullPath);
+        }
     }    
 }
-
