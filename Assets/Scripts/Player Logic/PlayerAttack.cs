@@ -2,16 +2,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour {
-    private float projectileSpeed;
-    private float projectileRange;
-    private float projectileCooldown;
+    private PlayerStats playerStats;
     private float nextProjectileAvailability = 0f;
     public GameObject PlayerProjectilePrefab;
-
+    
     void Start() {
-        projectileSpeed = GetComponent<PlayerStats>().projectileSpeed;
-        projectileRange = GetComponent<PlayerStats>().projectileRange;
-        projectileCooldown = GetComponent<PlayerStats>().projectileCooldown;
+        playerStats = GetComponent<PlayerStats>();
     }
     
     void Update() {
@@ -21,7 +17,7 @@ public class PlayerAttack : MonoBehaviour {
             Keyboard.current.rightArrowKey.isPressed) {
                 if (Time.time > nextProjectileAvailability) {
                     Shoot();
-                    nextProjectileAvailability = Time.time + projectileCooldown;
+                    nextProjectileAvailability = Time.time + playerStats.projectileCooldown;
                 }
         }
     }
@@ -32,19 +28,19 @@ public class PlayerAttack : MonoBehaviour {
 
         if (rb != null) {
             if (Keyboard.current.upArrowKey.isPressed) {
-                rb.linearVelocity = Vector2.up * projectileSpeed;
+                rb.linearVelocity = Vector2.up * playerStats.projectileSpeed;
             }
             else if (Keyboard.current.downArrowKey.isPressed) {
-                rb.linearVelocity = Vector2.down * projectileSpeed;
+                rb.linearVelocity = Vector2.down * playerStats.projectileSpeed;
             }
             else if (Keyboard.current.rightArrowKey.isPressed) {
-                rb.linearVelocity = Vector2.right * projectileSpeed;
+                rb.linearVelocity = Vector2.right * playerStats.projectileSpeed;
             }
             else if (Keyboard.current.leftArrowKey.isPressed) {
-                rb.linearVelocity = Vector2.left * projectileSpeed;
+                rb.linearVelocity = Vector2.left * playerStats.projectileSpeed;
             }
         }
 
-        Destroy(bullet, projectileRange);
+        Destroy(bullet, playerStats.projectileRange);
     }
 }

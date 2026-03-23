@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour {
-    //Player Movement Stats
-    public float moveSpeed = 5f;
+public class DefaultStats : MonoBehaviour{
+    public float moveSpeed = 2f;
     public float acceleration = 100f;
     public float deceleration = 100f;
 
