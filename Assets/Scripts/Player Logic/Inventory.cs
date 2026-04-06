@@ -1,6 +1,4 @@
-using UnityEditor.ShortcutManagement;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class Inventory : MonoBehaviour {
     private ItemData[] items;
