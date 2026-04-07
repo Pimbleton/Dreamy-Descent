@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PickBoss : MonoBehaviour
 {
-    public static string pickBoss(string currentScene) {
+    public static string pickBoss(int floor) {
         int bossNum = Random.Range(0, 3);
 
-        if (currentScene == "Floor1") {
+        if (floor == 1) {
             switch (bossNum) {
                 case 0:
                     return "Libra";
@@ -15,7 +15,7 @@ public class PickBoss : MonoBehaviour
                     return "Aquarius";
             }
         }
-        else if (currentScene == "Floor2") {
+        else if (floor == 2) {
             switch (bossNum) {
                 case 0:
                     return "Pisces";
@@ -25,7 +25,7 @@ public class PickBoss : MonoBehaviour
                     return "Scorpio";
             }
         }
-        else if (currentScene == "Floor3") {
+        else if (floor == 3) {
             switch (bossNum) {
                 case 0:
                     return "Taurus";
@@ -35,7 +35,7 @@ public class PickBoss : MonoBehaviour
                     return "Capricorn";
             }
         }
-        else if (currentScene == "Floor4") {
+        else if (floor == 4) {
             switch (bossNum) {
                 case 0:
                     return "Sagittarius";
@@ -44,6 +44,9 @@ public class PickBoss : MonoBehaviour
                 case 2:
                     return "Aries";
             }
+        }
+        else if (floor == 5) {
+            return "Ophiuchus";
         }
         return "";
     }
