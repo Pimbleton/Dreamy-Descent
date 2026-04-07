@@ -1,39 +1,38 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class FloorGenerator : MonoBehaviour {
     public int minRooms;
     public int maxRooms;
-    
-    public string currentScene;
+    public int currentFloor;
+
     public string boss;
     Dictionary<Vector2Int, GameObject> spawnedRooms;
 
     void Start() {
-        currentScene = SceneManager.GetActiveScene().name;
+        currentFloor = 1;
         spawnedRooms = new Dictionary<Vector2Int, GameObject>();
 
-        switch (currentScene) {
-            case "Floor1":
+        switch (currentFloor) {
+            case 1:
                 minRooms = 6;
-                maxRooms = 10;
+                maxRooms = 9;
                 break;
-            case "Floor2":
-                minRooms = 8;
-                maxRooms = 12;
-                break;
-            case "Floor3":
+            case 2:
                 minRooms = 10;
-                maxRooms = 15;
+                maxRooms = 13;
                 break;
-            case "Floor4":
-                minRooms = 12;
-                maxRooms = 18;
+            case 3:
+                minRooms = 14;
+                maxRooms = 16;
                 break;
-            case "Floor5":
-                minRooms = 15;
+            case 4:
+                minRooms = 17;
                 maxRooms = 20;
+                break;
+            case 5:
+                minRooms = 21;
+                maxRooms = 24;
                 break;
         }
         GenerateFloor();
@@ -45,7 +44,10 @@ public class FloorGenerator : MonoBehaviour {
         // Start by placing the "Start" room at location (0,0)
         PlaceRoom(Vector2Int.zero, "Start");
 
-        // 2. Growth Loop
+        // Actual random walk generation of rooms.
+        // First, a random room is selected from the already placed rooms.
+        // Then, a random direction is chosen to attempt to place a new room.
+        // If the target position is already occupied, redo the process until successful.
         int safetyNet = 0;
         while (spawnedRooms.Count < roomCount && safetyNet < 1000) {
             Vector2Int randomRoomPos = GetRandomPlacedRoomPos();
@@ -58,6 +60,7 @@ public class FloorGenerator : MonoBehaviour {
         }
 
         // Assign the special case rooms here.
+        // If either fails to properly generate, we reset the floor and try again.
         if (!AssignSpecialRoom("Boss") || !AssignSpecialRoom("Item")) {
             ResetFloor();
             return;
@@ -79,16 +82,15 @@ public class FloorGenerator : MonoBehaviour {
         // Sets a position based on grid coordinates, taking into account the rooms' dimensions.
         Vector3 spawnPos = new Vector3(pos.x * 17.8f, pos.y * 10f, 0f);
         
-        // Loads the room prefab based on the current scene and type, then instantiates it at the calculated position.
+        // Loads the room prefab based on the current floor and type, then instantiates it at the calculated position.
         switch (type) {
             case "Start":
-                roomObj = Instantiate(Resources.Load<GameObject>($"Prefabs/{currentScene}/Rooms/Start_Room"), spawnPos, Quaternion.identity);
+                roomObj = Instantiate(Resources.Load<GameObject>($"Prefabs/Floor{currentFloor}/Rooms/Start_Room"), spawnPos, Quaternion.identity);
                 break;
             case "Basic":
-                roomObj = Instantiate(Resources.Load<GameObject>($"Prefabs/{currentScene}/Rooms/Basic1"), spawnPos, Quaternion.identity);
+                roomObj = Instantiate(Resources.Load<GameObject>($"Prefabs/Floor{currentFloor}/Rooms/Basic1"), spawnPos, Quaternion.identity);
                 break;
         }
-        
         
         roomObj.name = $"Room_{type}_{pos.x}_{pos.y}";
         
@@ -110,13 +112,25 @@ bool AssignSpecialRoom(string type) {
 
         foreach (var entry in spawnedRooms) {
             Vector2Int pos = entry.Key;
-            if (pos == Vector2Int.zero) continue;
 
+            if (pos == Vector2Int.zero) {
+                continue;
+            }
+
+            // Count neighbors to find dead ends.
             int neighborCount = 0;
-            if (spawnedRooms.ContainsKey(pos + Vector2Int.up)) neighborCount++;
-            if (spawnedRooms.ContainsKey(pos + Vector2Int.down)) neighborCount++;
-            if (spawnedRooms.ContainsKey(pos + Vector2Int.left)) neighborCount++;
-            if (spawnedRooms.ContainsKey(pos + Vector2Int.right)) neighborCount++;
+            if (spawnedRooms.ContainsKey(pos + Vector2Int.up)) {
+                neighborCount++;
+            }
+            if (spawnedRooms.ContainsKey(pos + Vector2Int.down)) {
+                neighborCount++;
+            }
+            if (spawnedRooms.ContainsKey(pos + Vector2Int.left)) {
+                neighborCount++;
+            }
+            if (spawnedRooms.ContainsKey(pos + Vector2Int.right)) {
+                neighborCount++;
+            }
 
             // Use the name check to ensure we don't pick a room already converted to Boss/Item
             if (neighborCount == 1 && spawnedRooms[pos].name.Contains("Basic")) {
@@ -131,20 +145,20 @@ bool AssignSpecialRoom(string type) {
             return false;
         }
 
-        // 1. Get reference to the old room and its position
+        // Get reference to the old room and its position
         GameObject oldRoom = spawnedRooms[targetPos];
         Vector3 spawnPos = oldRoom.transform.position;
 
-        // 2. Prepare the new room variable
+        // Prepare the new room variable
         GameObject newRoom = null;
 
         switch (type) {
             case "Boss":
-                string bossName = PickBoss.pickBoss(currentScene);
-                newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/{currentScene}/Rooms/{bossName}_Room"), spawnPos, Quaternion.identity);
+                string bossName = PickBoss.pickBoss(currentFloor);
+                newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/{currentFloor}/Rooms/{bossName}_Room"), spawnPos, Quaternion.identity);
                 break;
             case "Item":
-                newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/{currentScene}/Rooms/Item_Room"), spawnPos, Quaternion.identity);
+                newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/{currentFloor}/Rooms/Item_Room"), spawnPos, Quaternion.identity);
                 break;
         }
 
