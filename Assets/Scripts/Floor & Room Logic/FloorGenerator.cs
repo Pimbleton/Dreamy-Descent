@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class FloorGenerator : MonoBehaviour {
-    public int minRooms = 10;
-    public int maxRooms = 15;
+    public int minRooms;
+    public int maxRooms;
     
     public string currentScene;
     public string boss;
@@ -13,6 +13,29 @@ public class FloorGenerator : MonoBehaviour {
     void Start() {
         currentScene = SceneManager.GetActiveScene().name;
         spawnedRooms = new Dictionary<Vector2Int, GameObject>();
+
+        switch (currentScene) {
+            case "Floor1":
+                minRooms = 6;
+                maxRooms = 10;
+                break;
+            case "Floor2":
+                minRooms = 8;
+                maxRooms = 12;
+                break;
+            case "Floor3":
+                minRooms = 10;
+                maxRooms = 15;
+                break;
+            case "Floor4":
+                minRooms = 12;
+                maxRooms = 18;
+                break;
+            case "Floor5":
+                minRooms = 15;
+                maxRooms = 20;
+                break;
+        }
         GenerateFloor();
     }
 
@@ -35,16 +58,18 @@ public class FloorGenerator : MonoBehaviour {
         }
 
         // Assign the special case rooms here.
-        AssignSpecialRoom("Boss");
-        AssignSpecialRoom("Item");
+        if (!AssignSpecialRoom("Boss") || !AssignSpecialRoom("Item")) {
+            ResetFloor();
+            return;
+        }
         
         // Setup doors for all rooms after all have been placed.
         foreach (var room in spawnedRooms) {
             room.Value.GetComponent<RoomAttributes>().SetupDoors(spawnedRooms);
 
-            if (!room.Value.GetComponent<RoomAttributes>().name.Contains("Start")) {
-                room.Value.SetActive(false);
-            }
+            //if (!room.Value.GetComponent<RoomAttributes>().name.Contains("Start")) {
+            //    room.Value.SetActive(false);
+            //}
         }
     }
 
@@ -80,7 +105,7 @@ public class FloorGenerator : MonoBehaviour {
         return keys[Random.Range(0, keys.Count)];
     }
 
-void AssignSpecialRoom(string type) {
+bool AssignSpecialRoom(string type) {
         List<Vector2Int> deadEnds = new List<Vector2Int>();
 
         foreach (var entry in spawnedRooms) {
@@ -103,8 +128,7 @@ void AssignSpecialRoom(string type) {
         if (deadEnds.Count >= 2) {
             targetPos = deadEnds[Random.Range(0, deadEnds.Count)];
         } else {
-            ResetFloor();
-            return;
+            return false;
         }
 
         // 1. Get reference to the old room and its position
@@ -127,15 +151,17 @@ void AssignSpecialRoom(string type) {
         if (newRoom != null) {
             newRoom.name = $"Room_{type}_{targetPos.x}_{targetPos.y}";
             
-            // 3. CRITICAL: Update the dictionary to point to the new object
+            // Update the dictionary to point to the new object
             spawnedRooms[targetPos] = newRoom;
 
-            // 4. Update the GridPos in the new room's RoomAttributes
+            // Update the GridPos in the new room's RoomAttributes
             newRoom.GetComponent<RoomAttributes>().gridPos = targetPos;
 
-            // 5. Destroy the old "Basic" room GameObject
+            // Destroy the old "Basic" room GameObject
             Destroy(oldRoom);
         }
+
+        return true;
     }
 
     Vector2Int GetRandomDirection() {
