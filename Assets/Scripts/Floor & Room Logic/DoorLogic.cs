@@ -1,21 +1,27 @@
 using UnityEngine;
 
 public class DoorLogic : MonoBehaviour {
-    private GameObject player;
+    [Header("Room References")]
     private GameObject currentRoom;
     private GameObject northRoom;
     private GameObject southRoom;
     private GameObject eastRoom;
     private GameObject westRoom;
+
+    [Header("Misc")]
+    private CameraScaling scaler;
+    private GameObject player;
     private Vector3 spawnPoint;
 
     void Start() {
-        player = GameObject.FindGameObjectWithTag("Player");
+        // Initialize appropriate references.
         currentRoom = GetComponentInParent<RoomAttributes>().gameObject;
         northRoom = GetComponentInParent<RoomAttributes>().northRoom;
         southRoom = GetComponentInParent<RoomAttributes>().southRoom;
         eastRoom = GetComponentInParent<RoomAttributes>().eastRoom;
         westRoom = GetComponentInParent<RoomAttributes>().westRoom;
+        player = GameObject.FindGameObjectWithTag("Player");
+        scaler = Camera.main.GetComponent<CameraScaling>();
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -51,6 +57,11 @@ public class DoorLogic : MonoBehaviour {
     }
 
     void MoveCamera(GameObject room) {
-        Camera.main.transform.position = new Vector3(room.transform.position.x, room.transform.position.y, Camera.main.transform.position.z);
+        if (scaler != null) {
+            // Instead of transform.Find, call the script directly
+            RoomAttributes attr = room.GetComponent<RoomAttributes>();
+            attr.InitializeCamera(); 
+            // This is much cleaner than looking for children by string name
+        }
     }
 }
