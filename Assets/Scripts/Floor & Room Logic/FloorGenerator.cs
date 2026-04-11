@@ -9,32 +9,21 @@ public class FloorGenerator : MonoBehaviour {
     public string boss;
     Dictionary<Vector2Int, GameObject> spawnedRooms;
 
+    public static FloorGenerator Instance;
+
     void Start() {
+        // Initialize the singleton
+        if (Instance == null) {
+            Instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+
         currentFloor = 1;
         spawnedRooms = new Dictionary<Vector2Int, GameObject>();
 
-        switch (currentFloor) {
-            case 1:
-                minRooms = 6;
-                maxRooms = 9;
-                break;
-            case 2:
-                minRooms = 10;
-                maxRooms = 13;
-                break;
-            case 3:
-                minRooms = 14;
-                maxRooms = 16;
-                break;
-            case 4:
-                minRooms = 17;
-                maxRooms = 20;
-                break;
-            case 5:
-                minRooms = 21;
-                maxRooms = 24;
-                break;
-        }
+        // Sets floor preset to 1 and generates the floor.
+        resolveFloorPreset(currentFloor);
         GenerateFloor();
     }
 
@@ -85,10 +74,10 @@ public class FloorGenerator : MonoBehaviour {
         // Loads the room prefab based on the current floor and type, then instantiates it at the calculated position.
         switch (type) {
             case "Start":
-                roomObj = Instantiate(Resources.Load<GameObject>($"Prefabs/Floor{currentFloor}/Rooms/Start_Room"), spawnPos, Quaternion.identity);
+                roomObj = Instantiate(Resources.Load<GameObject>($"Prefabs/Rooms/Floor{currentFloor}/Start_Room"), spawnPos, Quaternion.identity);
                 break;
             case "Basic":
-                roomObj = Instantiate(Resources.Load<GameObject>($"Prefabs/Floor{currentFloor}/Rooms/Basic1"), spawnPos, Quaternion.identity);
+                roomObj = Instantiate(Resources.Load<GameObject>($"Prefabs/Rooms/Floor{currentFloor}/Basic_Room_0"), spawnPos, Quaternion.identity);
                 break;
         }
         
@@ -155,10 +144,11 @@ bool AssignSpecialRoom(string type) {
         switch (type) {
             case "Boss":
                 string bossName = PickBoss.pickBoss(currentFloor);
-                newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/{currentFloor}/Rooms/{bossName}_Room"), spawnPos, Quaternion.identity);
+                Debug.Log("BossName: " + bossName);
+                newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/Rooms/Floor{currentFloor}/" + bossName + "_Room"), spawnPos, Quaternion.identity);
                 break;
             case "Item":
-                newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/{currentFloor}/Rooms/Item_Room"), spawnPos, Quaternion.identity);
+                newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/Rooms/Floor{currentFloor}/Item_Room"), spawnPos, Quaternion.identity);
                 break;
         }
 
@@ -183,11 +173,38 @@ bool AssignSpecialRoom(string type) {
         return dirs[Random.Range(0, 4)];
     }
 
-    void ResetFloor () {
+    public void ResetFloor () {
         foreach (var room in spawnedRooms) {
             Destroy(room.Value);
         }
         spawnedRooms.Clear();
+        
+        resolveFloorPreset(currentFloor);
         GenerateFloor();
+    }
+
+    void resolveFloorPreset(int floor) {
+        switch (floor) {
+            case 1:
+                minRooms = 6;
+                maxRooms = 9;
+                break;
+            case 2:
+                minRooms = 10;
+                maxRooms = 13;
+                break;
+            case 3:
+                minRooms = 14;
+                maxRooms = 16;
+                break;
+            case 4:
+                minRooms = 17;
+                maxRooms = 20;
+                break;
+            case 5:
+                minRooms = 21;
+                maxRooms = 24;
+                break;
+        }
     }
 }
