@@ -2,27 +2,49 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RoomAttributes : MonoBehaviour {
-    [Header("Door GameObjects")]
+    [Header("Doors")]
     public GameObject doorNorth;
     public GameObject doorSouth;
     public GameObject doorEast;
     public GameObject doorWest;
 
-    [HideInInspector] public Vector2Int gridPos;
-    
+    [Header("Neighbors")]
     public GameObject northRoom;
     public GameObject southRoom;
     public GameObject eastRoom;
     public GameObject westRoom;
 
+    [Header("Colliders")]
+    private Transform playerCollidersContainer;
+    private Transform projectileCollidersContainer;
+
+    [Header("Misc")]
+    private SpriteRenderer cachedBounds;
     public string roomType;
+
+    public Vector2Int gridPos;
 
     void Awake() {
         doorNorth = transform.Find("N_Door").gameObject;
         doorSouth = transform.Find("S_Door").gameObject;
         doorEast = transform.Find("E_Door").gameObject;
         doorWest = transform.Find("W_Door").gameObject;
-    } 
+        
+        playerCollidersContainer = transform.Find("PlayerCollider");  
+        // projectileCollidersContainer = transform.Find("ProjectileCollider");
+
+        Transform boundsTransform = transform.Find("CameraBounds");
+        if (boundsTransform != null) {
+            cachedBounds = boundsTransform.GetComponent<SpriteRenderer>();
+        }
+    }
+    
+    void Start() {
+        if (gameObject.activeInHierarchy) {
+                InitializeCamera();
+        }
+    }
+
     public void SetupDoors(Dictionary<Vector2Int, GameObject> floorPlan) {  
         // North
         bool hasNorth = floorPlan.TryGetValue(gridPos + Vector2Int.up, out northRoom);
@@ -40,43 +62,41 @@ public class RoomAttributes : MonoBehaviour {
         bool hasWest = floorPlan.TryGetValue(gridPos + Vector2Int.left, out westRoom);
         doorWest.SetActive(hasWest);
 
-        //ApplyCollider(hasNorth, hasSouth, hasEast, hasWest);
+        ApplyCollider(hasNorth, hasSouth, hasEast, hasWest);
     }
 
-/*
     void ApplyCollider(bool n, bool s, bool e, bool w) {
-        GameObject playerColliders = transform.Find("PlayerCollider").gameObject;
-        GameObject projectileColliders = transform.Find("ProjectileCollider").gameObject;
+        // 1. Clear existing colliders first
+        //foreach (Transform child in playerCollidersContainer) Destroy(child.gameObject);
+        //foreach (Transform child in projectileCollidersContainer) Destroy(child.gameObject);
 
+        // Build the name string with respective active door directions
         string availableDoors = "";
-        string playerWallName;
-        string projectileWallName;
+        if (n) availableDoors += "N";
+        if (e) availableDoors += "E";
+        if (s) availableDoors += "S";
+        if (w) availableDoors += "W";
 
-        if (n) {
-            availableDoors += "N";  
-        } 
-        if (e) {
-            availableDoors += "E";  
-        } 
-        if (s) {
-            availableDoors += "S";
-        }
-        if (w) {
-            availableDoors += "W";
-        }
+        // Call SpawnCollider that gives the respective prefab name along with the parent transform to maintain hierarchy
+        SpawnCollider($"{availableDoors}_PlayerWalls", playerCollidersContainer);
+        //SpawnCollider($"Prefabs/ProjectileWalls/{availableDoors}_ProjectileWalls", projectileCollidersContainer);
+    }
 
-        playerWallName = $"{availableDoors}_PlayerWalls";
-        projectileWallName = $"{availableDoors}_ProjectileWalls";
-
-        GameObject playerWallPrefab = Resources.Load<GameObject>($"Prefabs/{playerWallName}");
-        GameObject projectileWallPrefab = Resources.Load<GameObject>($"Prefabs/{projectileWallName}");
-
-        if (playerWallPrefab != null) {
-            playerColliders = Instantiate(playerWallPrefab, playerColliders.transform.position, Quaternion.identity, playerColliders.transform);
-        }
-        if (projectileWallPrefab != null) {
-            projectileColliders = Instantiate(projectileWallPrefab, projectileColliders.transform.position, Quaternion.identity, projectileColliders.transform);
+    void SpawnCollider(string prefabName, Transform parent) {
+        GameObject prefab = Resources.Load<GameObject>($"Prefabs/PlayerWalls/{prefabName}");
+        if (prefab != null) {
+            // Instantiate without overwriting the parent reference
+            Instantiate(prefab, parent.position, Quaternion.identity, parent);
+        } else {
+            Debug.LogWarning($"Prefab not found: {prefabName}");
         }
     }
-*/
+
+    public void InitializeCamera() {
+        CameraScaling scaler = Camera.main.GetComponent<CameraScaling>();
+        
+        if (scaler != null && cachedBounds != null) {
+            scaler.UpdateBounds(cachedBounds);
+        }
+    }
 }

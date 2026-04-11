@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 752018284056607787, guid: d1fc77ec9e8b0f74185e6d010ba02c52, type: 3}
       propertyPath: m_Name
-      value: Basic_Room_0 Variant
+      value: Basic_Room_0
       objectReference: {fileID: 0}
     - target: {fileID: 1749644964803276884, guid: d1fc77ec9e8b0f74185e6d010ba02c52, type: 3}
       propertyPath: m_Sprite

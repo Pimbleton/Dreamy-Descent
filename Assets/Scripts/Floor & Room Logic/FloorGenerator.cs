@@ -59,10 +59,15 @@ public class FloorGenerator : MonoBehaviour {
         foreach (var room in spawnedRooms) {
             room.Value.GetComponent<RoomAttributes>().SetupDoors(spawnedRooms);
 
-            //if (!room.Value.GetComponent<RoomAttributes>().name.Contains("Start")) {
-            //    room.Value.SetActive(false);
-            //}
+            if (!room.Value.GetComponent<RoomAttributes>().name.Contains("Start")) {
+                 room.Value.SetActive(false);
+            }
         }
+
+        // Sets start room as default active room and initializes the camera to focus on it.
+        GameObject startRoom = spawnedRooms[Vector2Int.zero]; 
+        startRoom.SetActive(true); 
+        startRoom.GetComponent<RoomAttributes>().InitializeCamera();
     }
 
     void PlaceRoom(Vector2Int pos, string type) {
@@ -144,7 +149,6 @@ bool AssignSpecialRoom(string type) {
         switch (type) {
             case "Boss":
                 string bossName = PickBoss.pickBoss(currentFloor);
-                Debug.Log("BossName: " + bossName);
                 newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/Rooms/Floor{currentFloor}/" + bossName + "_Room"), spawnPos, Quaternion.identity);
                 break;
             case "Item":
