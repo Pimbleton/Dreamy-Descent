@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2652409604238953858}
   m_Layer: 0
   m_Name: PlayerCollider
-  m_TagString: Untagged
+  m_TagString: Physical Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,8 +26,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.00019451973, y: -0.00011894836, z: 0}
-  m_LocalScale: {x: 1.0813451, y: 1.0813451, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4024918327734327499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1267754676356680456}
   m_Layer: 0
   m_Name: ProjectileCollider
-  m_TagString: Untagged
+  m_TagString: Projectile Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,8 +57,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.00019451973, y: -0.00011894836, z: 0}
-  m_LocalScale: {x: 1.0813451, y: 1.0813451, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4024918327734327499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -271,14 +271,12 @@ MonoBehaviour:
   doorSouth: {fileID: 0}
   doorEast: {fileID: 0}
   doorWest: {fileID: 0}
-  gridPos: {x: 0, y: 0}
   northRoom: {fileID: 0}
   southRoom: {fileID: 0}
   eastRoom: {fileID: 0}
   westRoom: {fileID: 0}
-  playerCollidersContainer: {fileID: 0}
-  projectileCollidersContainer: {fileID: 0}
   roomType: 
+  gridPos: {x: 0, y: 0}
 --- !u!1001 &1347023944464063603
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -61,7 +61,6 @@ public class DoorLogic : MonoBehaviour {
             // Instead of transform.Find, call the script directly
             RoomAttributes attr = room.GetComponent<RoomAttributes>();
             attr.InitializeCamera(); 
-            // This is much cleaner than looking for children by string name
         }
     }
 }
