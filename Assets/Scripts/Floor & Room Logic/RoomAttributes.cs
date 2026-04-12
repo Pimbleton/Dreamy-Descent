@@ -66,10 +66,6 @@ public class RoomAttributes : MonoBehaviour {
     }
 
     void ApplyCollider(bool n, bool s, bool e, bool w) {
-        // 1. Clear existing colliders first
-        //foreach (Transform child in playerCollidersContainer) Destroy(child.gameObject);
-        //foreach (Transform child in projectileCollidersContainer) Destroy(child.gameObject);
-
         // Build the name string with respective active door directions
         string availableDoors = "";
         if (n) availableDoors += "N";
@@ -78,7 +74,7 @@ public class RoomAttributes : MonoBehaviour {
         if (w) availableDoors += "W";
 
         // Call SpawnCollider that gives the respective prefab name along with the parent transform to maintain hierarchy
-        SpawnCollider($"{availableDoors}_PlayerWalls", playerCollidersContainer);
+        SpawnCollider($"{availableDoors}_PlayerWall", playerCollidersContainer);
         //SpawnCollider($"Prefabs/ProjectileWalls/{availableDoors}_ProjectileWalls", projectileCollidersContainer);
     }
 

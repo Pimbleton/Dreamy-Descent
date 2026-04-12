@@ -278,7 +278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.79017, y: -4.62326}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920.0001, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &7576258338999898597
@@ -355,14 +355,12 @@ MonoBehaviour:
   doorSouth: {fileID: 0}
   doorEast: {fileID: 0}
   doorWest: {fileID: 0}
-  gridPos: {x: 0, y: 0}
   northRoom: {fileID: 0}
   southRoom: {fileID: 0}
   eastRoom: {fileID: 0}
   westRoom: {fileID: 0}
-  playerCollidersContainer: {fileID: 0}
-  projectileCollidersContainer: {fileID: 0}
   roomType: Start
+  gridPos: {x: 0, y: 0}
 --- !u!1 &840052568956875019
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +372,7 @@ GameObject:
   - component: {fileID: 8456997995790925161}
   m_Layer: 0
   m_Name: ProjectileCollider
-  m_TagString: Untagged
+  m_TagString: Projectile Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -388,8 +386,8 @@ RectTransform:
   m_GameObject: {fileID: 840052568956875019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0813451, y: 1.0813451, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5851695528285279542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -409,7 +407,7 @@ GameObject:
   - component: {fileID: 7145066531796849278}
   m_Layer: 0
   m_Name: PlayerCollider
-  m_TagString: Untagged
+  m_TagString: Physical Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -423,8 +421,8 @@ RectTransform:
   m_GameObject: {fileID: 5871237854013214039}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0813451, y: 1.0813451, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5851695528285279542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
