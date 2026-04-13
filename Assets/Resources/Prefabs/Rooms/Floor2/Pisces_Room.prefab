@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5795472325313650618, guid: e2a947a7eb2f8524996ff00670941a58, type: 3}
       propertyPath: m_Name
-      value: Pisces_Room Variant
+      value: Pisces_Room
       objectReference: {fileID: 0}
     - target: {fileID: 7618426393426108615, guid: e2a947a7eb2f8524996ff00670941a58, type: 3}
       propertyPath: m_Pivot.x
@@ -74,11 +74,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7618426393426108615, guid: e2a947a7eb2f8524996ff00670941a58, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2.68965
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7618426393426108615, guid: e2a947a7eb2f8524996ff00670941a58, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.55436
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7618426393426108615, guid: e2a947a7eb2f8524996ff00670941a58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

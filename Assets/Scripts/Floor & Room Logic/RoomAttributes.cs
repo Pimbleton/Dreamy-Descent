@@ -31,7 +31,7 @@ public class RoomAttributes : MonoBehaviour {
         doorWest = transform.Find("W_Door").gameObject;
         
         playerCollidersContainer = transform.Find("PlayerCollider");  
-        // projectileCollidersContainer = transform.Find("ProjectileCollider");
+        projectileCollidersContainer = transform.Find("ProjectileCollider");
 
         Transform boundsTransform = transform.Find("CameraBounds");
         if (boundsTransform != null) {
@@ -73,13 +73,23 @@ public class RoomAttributes : MonoBehaviour {
         if (s) availableDoors += "S";
         if (w) availableDoors += "W";
 
-        // Call SpawnCollider that gives the respective prefab name along with the parent transform to maintain hierarchy
-        SpawnCollider($"{availableDoors}_PlayerWall", playerCollidersContainer);
-        //SpawnCollider($"Prefabs/ProjectileWalls/{availableDoors}_ProjectileWalls", projectileCollidersContainer);
+        // Call respective SpawnCollider methods that give the respective prefab name along with the parent transform to maintain hierarchy
+        SpawnPlayerCollider($"{availableDoors}_PlayerWall", playerCollidersContainer);
+        SpawnProjectileCollider($"{availableDoors}_ProjectileWall", projectileCollidersContainer);
     }
 
-    void SpawnCollider(string prefabName, Transform parent) {
+    void SpawnPlayerCollider(string prefabName, Transform parent) {
         GameObject prefab = Resources.Load<GameObject>($"Prefabs/PlayerWalls/{prefabName}");
+        if (prefab != null) {
+            // Instantiate without overwriting the parent reference
+            Instantiate(prefab, parent.position, Quaternion.identity, parent);
+        } else {
+            Debug.LogWarning($"Prefab not found: {prefabName}");
+        }
+    }
+
+    void SpawnProjectileCollider(string prefabName, Transform parent) {
+        GameObject prefab = Resources.Load<GameObject>($"Prefabs/ProjectileWalls/{prefabName}");
         if (prefab != null) {
             // Instantiate without overwriting the parent reference
             Instantiate(prefab, parent.position, Quaternion.identity, parent);

@@ -5,7 +5,7 @@ public class PitLogic : MonoBehaviour {
     GameObject player;
 
     void Start() {
-        gameObject.SetActive(false); // Start with the pit inactive
+        //gameObject.SetActive(false); // Start with the pit inactive
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
