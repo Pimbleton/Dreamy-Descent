@@ -269,13 +269,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomAdjacency
   doorNorth: {fileID: 0}
-  doorSouth: {fileID: 0}
   doorEast: {fileID: 0}
+  doorSouth: {fileID: 0}
   doorWest: {fileID: 0}
   northRoom: {fileID: 0}
-  southRoom: {fileID: 0}
   eastRoom: {fileID: 0}
+  southRoom: {fileID: 0}
   westRoom: {fileID: 0}
+  cleared: 0
   roomType: 
   gridPos: {x: 0, y: 0}
 --- !u!1001 &358296281809392596
@@ -325,6 +326,14 @@ PrefabInstance:
     - target: {fileID: 5511648592505746250, guid: 513d376bac123c7478494f8d6d560f43, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6216263777428031115, guid: 513d376bac123c7478494f8d6d560f43, type: 3}
+      propertyPath: m_labelHash
+      value: 2.282507e-36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6216263777428031115, guid: 513d376bac123c7478494f8d6d560f43, type: 3}
+      propertyPath: m_CategoryHash
+      value: 6.536907e-20
       objectReference: {fileID: 0}
     - target: {fileID: 7240047661955663035, guid: 513d376bac123c7478494f8d6d560f43, type: 3}
       propertyPath: m_Name
@@ -413,6 +422,18 @@ PrefabInstance:
     - target: {fileID: 292871939554960071, guid: bb2ce77b302a37141ba9d5131c3b2a08, type: 3}
       propertyPath: m_Name
       value: N_Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014257502332914932, guid: bb2ce77b302a37141ba9d5131c3b2a08, type: 3}
+      propertyPath: m_labelHash
+      value: 2.282507e-36
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014257502332914932, guid: bb2ce77b302a37141ba9d5131c3b2a08, type: 3}
+      propertyPath: m_SpriteHash
+      value: 399386175
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014257502332914932, guid: bb2ce77b302a37141ba9d5131c3b2a08, type: 3}
+      propertyPath: m_CategoryHash
+      value: 6.536907e-20
       objectReference: {fileID: 0}
     - target: {fileID: 7145483171717517381, guid: bb2ce77b302a37141ba9d5131c3b2a08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -574,6 +595,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5902844827582622156, guid: acc32cc3317c8a540b6615c8db1453f4, type: 3}
+      propertyPath: m_labelHash
+      value: 2.282507e-36
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902844827582622156, guid: acc32cc3317c8a540b6615c8db1453f4, type: 3}
+      propertyPath: m_CategoryHash
+      value: 6.536907e-20
+      objectReference: {fileID: 0}
     - target: {fileID: 8269500461458061348, guid: acc32cc3317c8a540b6615c8db1453f4, type: 3}
       propertyPath: m_Name
       value: E_Door
@@ -635,6 +664,14 @@ PrefabInstance:
     - target: {fileID: 3752695436688301324, guid: 8d999092492d7d54588fd08f7d8e148c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657936643766037593, guid: 8d999092492d7d54588fd08f7d8e148c, type: 3}
+      propertyPath: m_labelHash
+      value: 2.282507e-36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657936643766037593, guid: 8d999092492d7d54588fd08f7d8e148c, type: 3}
+      propertyPath: m_CategoryHash
+      value: 6.536907e-20
       objectReference: {fileID: 0}
     - target: {fileID: 8174453405419715643, guid: 8d999092492d7d54588fd08f7d8e148c, type: 3}
       propertyPath: m_Name
