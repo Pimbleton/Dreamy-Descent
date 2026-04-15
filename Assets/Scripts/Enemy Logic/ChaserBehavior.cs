@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChaserLogic : MonoBehaviour
+public class ChaserBehavior : MonoBehaviour
 {
     public int damage = 1;
     public float speed = 1f;
@@ -40,6 +40,7 @@ public class ChaserLogic : MonoBehaviour
 
         if (health <= 0) {
             Destroy(gameObject);
+            return;
         }
 
         knockbackTimer = knockbackDuration;
@@ -49,7 +50,9 @@ public class ChaserLogic : MonoBehaviour
     }
 
     void OnCollisionEnter2D (Collision2D other) {
-        if (other.gameObject.CompareTag("Player")) { other.gameObject.GetComponent<PlayerHurt>().PlayerTakeDamage(damage); }
+        if (other.gameObject.CompareTag("Player")) { 
+            other.gameObject.GetComponent<PlayerHurt>().PlayerTakeDamage(damage); 
+        }
     }
 
     void OnCollisionStay2D (Collision2D other) {

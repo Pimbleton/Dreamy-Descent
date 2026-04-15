@@ -4,19 +4,20 @@ using UnityEngine.InputSystem;
 
 public class PauseLogic : MonoBehaviour {
     public GameObject PauseMenu;
-    public Button ResumeButton;
-    public Button TitleButton;
-    public Button DesktopButton;
+    public Button ResumeButton, TitleButton, DesktopButton;
     public bool isPaused = false;
 
-    void Start() {
+    void Awake() {
         PauseMenu.SetActive(false);
+    }
+    
+    void Start() {
         ResumeButton.onClick.AddListener(() => {isPaused = false; PressResumeButton();});
         TitleButton.onClick.AddListener(() => {isPaused = false;});
         DesktopButton.onClick.AddListener(() => {isPaused = false;});
     }
 
-    void Update(){
+    void Update() {
         if (Keyboard.current.escapeKey.wasPressedThisFrame) {
             isPaused = !isPaused;
         }

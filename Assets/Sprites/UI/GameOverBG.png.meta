@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2700a6bf21b2aad4491218918a712c73
+guid: 68b43482160f12849b63bc5f7a9bf673
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 18870632872227266
-    second: HealthBar10_8_0
+      213: -898493434723336527
+    second: GameOverBG_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HealthBar10_8_0
+      name: GameOverBG_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 254
-        height: 62
+        x: 0
+        y: 0
+        width: 1250
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2c139099dba034000800000000000000
-      internalID: 18870632872227266
+      spriteID: 1be7b464bf8e783f0800000000000000
+      internalID: -898493434723336527
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HealthBar10_8_0: 18870632872227266
+      GameOverBG_0: -898493434723336527
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

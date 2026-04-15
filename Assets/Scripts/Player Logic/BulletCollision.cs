@@ -13,7 +13,7 @@ public class BulletCollision : MonoBehaviour {
         switch (objectTag) {
             case "Enemy":
                 Destroy(gameObject);
-                other.GetComponent<ChaserLogic>().EnemyTakeDamage(playerStats.projectileDamage, playerStats.projectileKnockback);
+                other.GetComponent<ChaserBehavior>().EnemyTakeDamage(playerStats.projectileDamage, playerStats.projectileKnockback);
                 break;
             case "Projectile Walls":
                 Destroy(gameObject);

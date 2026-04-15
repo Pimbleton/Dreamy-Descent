@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
     public void LoadMainMenu() {
-        SceneManager.LoadScene("Scenes/TitleScreen");
+        SceneManager.LoadScene("Scenes/MainMenu");
     }
     
     public void LoadFirstFloor() {
-        SceneManager.LoadScene("Scenes/Floor1");
+        SceneManager.LoadScene("Scenes/Game");
     }
 }
