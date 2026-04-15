@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AddItem : MonoBehaviour
+public class BossRoomObjects : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

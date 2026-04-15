@@ -6,14 +6,13 @@ TagManager:
   tags:
   - Enemy
   - Projectile
-  - Walls
   - Obstacle
-  - Door
   - Projectile Walls
   - Physical Walls
   - UI
   - Room
   - First Room
+  - Pickup Items
   layers:
   - Default
   - TransparentFX
@@ -62,6 +61,9 @@ TagManager:
     locked: 0
   - name: Item Sprites
     uniqueID: 2772771479
+    locked: 0
+  - name: Pickup Sprites
+    uniqueID: 1784941139
     locked: 0
   - name: Living Things
     uniqueID: 3180920927
