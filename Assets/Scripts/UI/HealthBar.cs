@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,25 +11,14 @@ public class HealthBar : MonoBehaviour {
     
     void Awake() {
         Instance = this;
+        playerStats = player.GetComponent<PlayerStats>();
     }
 
     void Start() {
-        if (player != null) {
-            playerStats = player.GetComponent<PlayerStats>();
-        }
-        
-        UpdateHealthBar();
-    }
-
-    public void updateHPAndMaxHP() {
         UpdateHealthBar();
     }
 
     public void UpdateHealthBar() {
-        if (playerStats == null) {
-            return;
-        }
-
         int health = playerStats.HP;
         int maxHealth = playerStats.maxHP;
 

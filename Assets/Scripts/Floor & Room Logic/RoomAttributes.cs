@@ -12,12 +12,13 @@ public class RoomAttributes : MonoBehaviour {
     [Header("Colliders")]
     private Transform playerCollidersContainer, projectileCollidersContainer;
 
+    [Header("Clear Conditioning")]
+    public bool cleared, hasCheckedInitialClear, previousState;
+
     [Header("Misc")]
-    public bool cleared;
     private SpriteRenderer cachedBounds;
     private SpriteResolver resolverN, resolverE, resolverS, resolverW;
     public string roomType;
-
     public Vector2Int gridPos;
 
     void Awake() {
@@ -52,16 +53,27 @@ public class RoomAttributes : MonoBehaviour {
     }
 
     void Start() {
+        // Initialize camera to fit room dimensions
         if (gameObject.activeInHierarchy) {
                 InitializeCamera();
         }
 
+        // Do initial room scan
         CheckIfCleared();
     }
 
     void Update() {
+        // Keep watch for change in clear status of room if initially uncleared
         if(!cleared && gameObject.activeInHierarchy) {
             CheckIfCleared();
+        }
+    }
+
+    public void InitializeCamera() {
+        CameraScaling scaler = Camera.main.GetComponent<CameraScaling>();
+        
+        if (scaler != null && cachedBounds != null) {
+            scaler.UpdateBounds(cachedBounds);
         }
     }
 
@@ -85,26 +97,6 @@ public class RoomAttributes : MonoBehaviour {
         ApplyCollider(hasNorth, hasSouth, hasEast, hasWest);
     }
 
-    private void CheckIfCleared() {
-        bool enemyFound = false;
-
-        // Loop through the children of this room only
-        foreach (Transform child in transform) {
-            if (child.CompareTag("Enemy")) {
-                enemyFound = true;
-                break; // We found one, no need to keep looking
-            }
-        }
-
-        if (!enemyFound) {
-            cleared = true;
-            UpdateDoorStates();
-        } else {
-            cleared = false;
-            UpdateDoorStates();
-        }
-    }
-
     public void UpdateDoorStates() {
         string label = cleared ? "Open" : "Closed";
 
@@ -119,7 +111,7 @@ public class RoomAttributes : MonoBehaviour {
             return;
         }
 
-        // Swap Sprite
+        // Swap to respective sprite
         if (resolver != null) {
             resolver.SetCategoryAndLabel("Doors", label);
         }
@@ -147,7 +139,6 @@ public class RoomAttributes : MonoBehaviour {
     void SpawnPlayerCollider(string prefabName, Transform parent) {
         GameObject prefab = Resources.Load<GameObject>($"Prefabs/PlayerWalls/{prefabName}");
         if (prefab != null) {
-            // Instantiate without overwriting the parent reference
             Instantiate(prefab, parent.position, Quaternion.identity, parent);
         } else {
             Debug.LogWarning($"Prefab not found: {prefabName}");
@@ -163,12 +154,50 @@ public class RoomAttributes : MonoBehaviour {
             Debug.LogWarning($"Prefab not found: {prefabName}");
         }
     }
+    private void CheckIfCleared() {
+        bool enemyFound = false;
 
-    public void InitializeCamera() {
-        CameraScaling scaler = Camera.main.GetComponent<CameraScaling>();
-        
-        if (scaler != null && cachedBounds != null) {
-            scaler.UpdateBounds(cachedBounds);
+        foreach (Transform child in transform) {
+            if (child.CompareTag("Enemy")) {
+                enemyFound = true;
+                break;
+            }
+        }
+
+        // Handles initial clear state
+        if (!hasCheckedInitialClear) {
+            hasCheckedInitialClear = true;
+            
+            // If cleared by default, skip heart pickup generation.
+            if (!enemyFound) {
+                cleared = true;
+                previousState = true; 
+                UpdateDoorStates();
+                return;
+            }
+        }
+
+        // Normal clear check
+        if (!enemyFound) {
+            cleared = true;
+
+            if (!previousState) {
+                SpawnReward();
+            }
+
+            previousState = true;
+            UpdateDoorStates();
+        } else {
+            cleared = false;
+            previousState = false;
+            UpdateDoorStates();
+        }
+    }
+
+    private void SpawnReward() {
+        int randInt = Random.Range(0, 10);
+        if (randInt > 7) {
+            Instantiate(Resources.Load<GameObject>("Prefabs/Pickups/HeartPickup"), transform.position, Quaternion.identity, transform);
         }
     }
 }

@@ -13,7 +13,6 @@ public class ItemCollisionLogic : MonoBehaviour {
                 inventory.AddItem(GetComponent<GenericItem>().itemData);
                 Destroy(this.gameObject);
             }
-            
         }
     }
 }

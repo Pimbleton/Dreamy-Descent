@@ -8,8 +8,6 @@ public class SceneLoader : MonoBehaviour {
     }
     
     public void LoadFirstFloor() {
-        SceneManager.LoadScene("Scenes/FirstFloor");
+        SceneManager.LoadScene("Scenes/Floor1");
     }
 }
-
-
