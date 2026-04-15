@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 905363941991658015}
   - component: {fileID: 1800831299366776738}
   - component: {fileID: 345586012581020393}
-  - component: {fileID: 5297352939371223171}
   m_Layer: 0
   m_Name: CloudyBoots
   m_TagString: Untagged
@@ -151,16 +150,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d47dd34127646f4198d0a5ac067bb6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemLogic
---- !u!114 &5297352939371223171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5953891847597794926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2635befdedb93e543beb7bb3ae81cd52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GenericItem
   itemData: {fileID: 11400000, guid: 05a42c5c9cb5c644485baf7d34e1b355, type: 2}
