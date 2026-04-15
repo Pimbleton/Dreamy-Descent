@@ -1,11 +1,14 @@
 using UnityEngine;
 
 public class Inventory : MonoBehaviour {
-    private ItemData[] items;
+    private GameObject player;
     public int itemCount = 0;
+    private ItemData[] items;
     private PlayerStats playerStats;
 
-    void Start() {
+
+    void Awake() {
+        player = GameObject.FindGameObjectWithTag("Player");
         playerStats = GetComponent<PlayerStats>(); 
         items = new ItemData[100];
     }
@@ -38,7 +41,7 @@ public class Inventory : MonoBehaviour {
                 } else if (playerStats.maxHP + item.maxHPStat > 10) {
                     playerStats.maxHP = 10;
                 } else if (playerStats.maxHP + item.maxHPStat < 1) {
-                    DeathHandler.Instance.Die();
+                    DeathHandler.Instance.Die(player);
                 }
             }
 
