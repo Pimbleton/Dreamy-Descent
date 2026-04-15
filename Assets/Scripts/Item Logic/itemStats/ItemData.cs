@@ -1,8 +1,8 @@
 using UnityEngine;
 
+// Creates an asset menu for items, streamlining the stat making process for them.
 [CreateAssetMenu(fileName = "NewItem", menuName = "Item")]
 public class ItemData : ScriptableObject {
-    
     [Header("Identity")]
     public string itemName = "Sample Item Name";
     [TextArea(3, 10)]

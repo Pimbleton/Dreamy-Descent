@@ -3,7 +3,7 @@ using UnityEngine;
 public class BulletCollision : MonoBehaviour {
     private PlayerStats playerStats;
 
-    void Start() {
+    void Awake() {
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
 
@@ -13,7 +13,7 @@ public class BulletCollision : MonoBehaviour {
         switch (objectTag) {
             case "Enemy":
                 Destroy(gameObject);
-                other.GetComponent<ChaserBehavior>().EnemyTakeDamage(playerStats.projectileDamage, playerStats.projectileKnockback);
+                other.GetComponent<SwirloBehavior>().EnemyTakeDamage(playerStats.projectileDamage, playerStats.projectileKnockback);
                 break;
             case "Projectile Walls":
                 Destroy(gameObject);

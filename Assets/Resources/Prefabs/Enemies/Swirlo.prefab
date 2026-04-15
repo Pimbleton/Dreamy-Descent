@@ -168,8 +168,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f30552f1818f6448a13074fa53557b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicEnemy
-  damage: 1
-  speed: 4
-  health: 10
-  myRigidBody: {fileID: 2685040777154402144}
-  knockbackDuration: 0.2
+  baseEnemyData: {fileID: 11400000, guid: bfed216bb421ff342b68ce50353c1f58, type: 2}

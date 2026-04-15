@@ -13,12 +13,8 @@ MonoBehaviour:
   m_Name: CloudBoots
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: CloudBoots
-  itemDescription: '~ Cloud Boots ~
-
-    Your steps feel lighter (And slightly damper...)
-
-    Movement
-    Speed Up!'
+  itemDescription: "Cloud Boots \nYour steps feel lighter (And slightly damper...)\nMovement
+    Speed Up!"
   HPStat: 0
   maxHPStat: 0
   projectileDamageStat: 0
@@ -26,5 +22,5 @@ MonoBehaviour:
   projectileSpeedStat: 0
   projectileKnockbackStat: 0
   projectileCooldownStat: 0
-  speedStat: 1
+  speedStat: 0.1
   invincibilityDurationStat: 0
