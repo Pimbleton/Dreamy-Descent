@@ -19,6 +19,6 @@ MonoBehaviour:
   projectileDamage: 0
   projectileRangeStat: 0
   projectileSpeedStat: 0
-  movementSpeed: 1
+  movementSpeed: 4
   knockbackDuration: 0
   knockbackTimer: 0

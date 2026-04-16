@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class DoorLogic : MonoBehaviour {
     [Header("Room References")]
-    private GameObject currentRoom, northRoom, southRoom, eastRoom, westRoom;
+    public GameObject currentRoom, northRoom, southRoom, eastRoom, westRoom;
 
     [Header("Misc")]
     private CameraScaling scaler;
     private GameObject player;
     private Vector3 spawnPoint;
 
-    void Awake() {
+    void Start() {
         // Initialize appropriate references.
         currentRoom = GetComponentInParent<RoomAttributes>().gameObject;
         northRoom = GetComponentInParent<RoomAttributes>().northRoom;

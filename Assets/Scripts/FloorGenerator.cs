@@ -11,7 +11,7 @@ public class FloorGenerator : MonoBehaviour {
 
     [HideInInspector] public static FloorGenerator Instance;
 
-    void Awake() {
+    void Start() {
         Instance = this;
         currentFloor = 1;
         spawnedRooms = new Dictionary<Vector2Int, GameObject>();

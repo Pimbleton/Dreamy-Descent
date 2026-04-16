@@ -1,15 +1,11 @@
 using UnityEngine;
 
 public class Inventory : MonoBehaviour {
-    [HideInInspector] public int itemCount = 0;
+    [SerializeField] private PlayerStats playerStats;
     private ItemData[] items;
-    private PlayerStats playerStats;
+    [HideInInspector] public int itemCount = 0;
 
-
-    void Awake() {
-        playerStats = GetComponent<PlayerStats>(); 
-        items = new ItemData[100];
-    }
+    void Awake() { items = new ItemData[100]; }
 
     public void AddItem(ItemData item) {
         if (itemCount < 100) {

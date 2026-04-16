@@ -2,10 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour {
-    private PlayerStats playerStats;
-    private Rigidbody2D myRigidbody;
-    
-    void Awake() { playerStats = GetComponent<PlayerStats>(); }
+    [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private Rigidbody2D myRigidbody;
     
     void FixedUpdate() { Movement(); }
 

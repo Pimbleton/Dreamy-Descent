@@ -498,9 +498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c50fabe427084428f26e9d4c752573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OtherStats
-  playerStats: {fileID: 0}
-  player: {fileID: 1447548065}
-  statsText: {fileID: 452961494}
 --- !u!114 &452961494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1723,10 +1720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5dd5662ba31f104f8b1e900ec341f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorGenerator
-  minRooms: 10
-  maxRooms: 15
   currentFloor: 0
-  boss: 
 --- !u!1 &1334089289
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,8 +2021,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b27dbc9c444f04ba4c8f5b45fd940f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthBar
-  healthBar: {fileID: 1378985751}
-  player: {fileID: 1447548065}
 --- !u!1 &1447548065
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,11 +2033,11 @@ GameObject:
   - component: {fileID: 1447548067}
   - component: {fileID: 1447548068}
   - component: {fileID: 1447548070}
-  - component: {fileID: 1447548069}
-  - component: {fileID: 1447548072}
   - component: {fileID: 1447548071}
-  - component: {fileID: 1447548073}
   - component: {fileID: 1447548075}
+  - component: {fileID: 1447548072}
+  - component: {fileID: 1447548069}
+  - component: {fileID: 1447548073}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2165,6 +2157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebbd3af424ee2848a80c7690c7becfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerActions
+  playerStats: {fileID: 1447548071}
   PlayerProjectilePrefab: {fileID: 8786892530053133619, guid: 6ff3b15e14e3f4d4eb143db2e5c41e6d, type: 3}
 --- !u!70 &1447548070
 CapsuleCollider2D:
@@ -2238,6 +2231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942ddd16ad36cf7469df3120768cbd13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  playerStats: {fileID: 1447548071}
   myRigidbody: {fileID: 1447548068}
 --- !u!114 &1447548073
 MonoBehaviour:
@@ -2251,8 +2245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec63367a8fe069e4abd7cece130c4232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHurt
+  playerStats: {fileID: 1447548071}
+  spriteRenderer: {fileID: 1447548067}
   healthBar: {fileID: 1378985753}
-  flashSpeed: 20
 --- !u!114 &1447548075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2265,6 +2260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756bd9c48902c064aaae0c855ec6d800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  playerStats: {fileID: 1447548071}
   itemCount: 0
 --- !u!1 &1929369293
 GameObject:
