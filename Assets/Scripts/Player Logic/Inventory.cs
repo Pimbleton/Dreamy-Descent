@@ -1,14 +1,12 @@
 using UnityEngine;
 
 public class Inventory : MonoBehaviour {
-    private GameObject player;
-    public int itemCount = 0;
+    [HideInInspector] public int itemCount = 0;
     private ItemData[] items;
     private PlayerStats playerStats;
 
 
     void Awake() {
-        player = GameObject.FindGameObjectWithTag("Player");
         playerStats = GetComponent<PlayerStats>(); 
         items = new ItemData[100];
     }
@@ -41,13 +39,11 @@ public class Inventory : MonoBehaviour {
                 } else if (playerStats.maxHP + item.maxHPStat > 10) {
                     playerStats.maxHP = 10;
                 } else if (playerStats.maxHP + item.maxHPStat < 1) {
-                    DeathHandler.Instance.Die(player);
+                    DeathHandler.Instance.Die(gameObject);
                 }
             }
-
         }
 
-        // TODO - Add checks to prevent stats from going above/below certain thresholds (e.g. move speed can't go below 0, projectile cooldown can't go below 0, etc.)
         if (item.projectileDamageStat != 0 || item.projectileKnockbackStat != 0 || item.projectileCooldownStat != 0 || item.projectileRangeStat != 0 || item.projectileSpeedStat != 0 || item.speedStat != 0 || item.invincibilityDurationStat != 0) {
             playerStats.projectileDamage += item.projectileDamageStat;
             playerStats.projectileKnockback += item.projectileKnockbackStat;

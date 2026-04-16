@@ -1,13 +1,8 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
-    public void LoadMainMenu() {
-        SceneManager.LoadScene("Scenes/MainMenu");
-    }
+    public void LoadMainMenu() { SceneManager.LoadScene("Scenes/MainMenu"); }
     
-    public void LoadFirstFloor() {
-        SceneManager.LoadScene("Scenes/Game");
-    }
+    public void LoadFirstFloor() { SceneManager.LoadScene("Scenes/Game"); }
 }

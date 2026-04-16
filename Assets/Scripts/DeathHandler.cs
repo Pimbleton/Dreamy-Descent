@@ -3,11 +3,9 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class DeathHandler : MonoBehaviour {
-    public static DeathHandler Instance;
+    [HideInInspector] public static DeathHandler Instance;
 
-    void Awake() {
-        Instance = this;
-    }
+    void Awake() { Instance = this; }
 
     public void Die(GameObject entity) {
         // If player dies, start game over countdown
@@ -16,7 +14,6 @@ public class DeathHandler : MonoBehaviour {
             GameOverUI.Instance.summonGameOverPopup();
             Instance.StartCoroutine(Instance.DeathTimerRoutine());
         } else {
-            Debug.Log("Reached enemy death condition.");
             Destroy(entity);
         }
     }

@@ -4,15 +4,9 @@ public class GameOverUI : MonoBehaviour {
     public GameObject GameOverDisplay;
     public static GameOverUI Instance;
 
-    void Awake() {
-        Instance = this;
-    }
+    void Awake() { Instance = this; }
     
-    void Start() {
-        GameOverDisplay.SetActive(false);
-    }
+    void Start() { GameOverDisplay.SetActive(false); }
 
-    public void summonGameOverPopup() {
-        GameOverDisplay.SetActive(true);
-    }
+    public void summonGameOverPopup() { GameOverDisplay.SetActive(true); }
 }

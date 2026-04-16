@@ -4,11 +4,9 @@ using UnityEngine.InputSystem;
 public class PlayerAttack : MonoBehaviour {
     private PlayerStats playerStats;
     private float nextProjectileAvailability = 0f;
-    public GameObject PlayerProjectilePrefab;
+    private GameObject PlayerProjectilePrefab;
     
-    void Start() {
-        playerStats = GetComponent<PlayerStats>();
-    }
+    void Awake() { playerStats = GetComponent<PlayerStats>(); }
     
     void Update() {
         if (Keyboard.current.upArrowKey.isPressed ||
@@ -29,14 +27,11 @@ public class PlayerAttack : MonoBehaviour {
         if (rb != null) {
             if (Keyboard.current.upArrowKey.isPressed) {
                 rb.linearVelocity = Vector2.up * playerStats.projectileSpeed;
-            }
-            else if (Keyboard.current.downArrowKey.isPressed) {
+            } else if (Keyboard.current.downArrowKey.isPressed) {
                 rb.linearVelocity = Vector2.down * playerStats.projectileSpeed;
-            }
-            else if (Keyboard.current.rightArrowKey.isPressed) {
+            } else if (Keyboard.current.rightArrowKey.isPressed) {
                 rb.linearVelocity = Vector2.right * playerStats.projectileSpeed;
-            }
-            else if (Keyboard.current.leftArrowKey.isPressed) {
+            } else if (Keyboard.current.leftArrowKey.isPressed) {
                 rb.linearVelocity = Vector2.left * playerStats.projectileSpeed;
             }
         }

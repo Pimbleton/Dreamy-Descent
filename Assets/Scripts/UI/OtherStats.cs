@@ -1,24 +1,17 @@
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class OtherStats : MonoBehaviour {
-    public static OtherStats Instance;
-
-    public PlayerStats playerStats;
-    public GameObject player;
-    public TextMeshProUGUI statsText;
+    private PlayerStats playerStats;
+    private TextMeshProUGUI statsText;
+    [HideInInspector] public static OtherStats Instance;
 
     void Awake() {
         Instance = this;
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
     
-    void Start() {
-        if (player != null) {
-            playerStats = player.GetComponent<PlayerStats>();
-            printStats();
-        }
-    }
+    void Start() { printStats(); }
 
     public void printStats() {
         statsText.text = "Attack : " + playerStats.projectileDamage + "\n" +

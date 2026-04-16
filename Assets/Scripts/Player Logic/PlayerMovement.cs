@@ -3,15 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour {
     private PlayerStats playerStats;
-    public Rigidbody2D myRigidbody;
+    private Rigidbody2D myRigidbody;
     
-    void Start() {
-        playerStats = GetComponent<PlayerStats>();
-    }
+    void Awake() { playerStats = GetComponent<PlayerStats>(); }
     
-    void FixedUpdate() {
-        Movement();
-    }
+    void FixedUpdate() { Movement(); }
 
     void Movement() {
         Vector2 movementVector = new Vector2(

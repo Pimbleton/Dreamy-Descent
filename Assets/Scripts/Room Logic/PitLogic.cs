@@ -1,20 +1,23 @@
 using UnityEngine;
 
 public class PitLogic : MonoBehaviour {
-    [Header("Player Reference")]
-    GameObject player;
+    private GameObject player;
 
-    void Start() {
-        //gameObject.SetActive(false); // Start with the pit inactive
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
+    void Awake() { player = GameObject.FindGameObjectWithTag("Player"); }
+
+    void Start() { gameObject.SetActive(false); }
 
     void OnTriggerEnter2D(Collider2D collision) {
-            if (collision.CompareTag("Player")) {
-                FloorGenerator.Instance.currentFloor += 1; // Move to the next floor
-                player.transform.position = Vector3.zero; // Reset player position to the center of the new floor
-                Camera.main.transform.position = new Vector3(0f, 0f, Camera.main.transform.position.z);
-                FloorGenerator.Instance.ResetFloor();
-            }
+        if (collision.CompareTag("Player")) {
+            // Pit entered, now incrementing to next floor.
+            FloorGenerator.Instance.currentFloor += 1;
+
+            // Sends player to center of "new" floor and centers camera there.
+            player.transform.position = Vector3.zero;
+            Camera.main.transform.position = new Vector3(0f, 0f, Camera.main.transform.position.z);
+
+            // Generate the new floor.
+            FloorGenerator.Instance.ResetFloor();
         }
     }
+}
