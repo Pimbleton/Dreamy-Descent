@@ -2,23 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FloorGenerator : MonoBehaviour {
-    public int minRooms;
-    public int maxRooms;
-    public int currentFloor;
+    [Header("Floor Attributes")]
+    private int minRooms;
+    private int maxRooms;
+    [HideInInspector] public int currentFloor;
+    private Dictionary<Vector2Int, GameObject> spawnedRooms;
+    
 
-    public string boss;
-    Dictionary<Vector2Int, GameObject> spawnedRooms;
+    [HideInInspector] public static FloorGenerator Instance;
 
-    public static FloorGenerator Instance;
-
-    void Start() {
-        // Initialize the singleton
-        if (Instance == null) {
-            Instance = this;
-        } else {
-            Destroy(gameObject);
-        }
-
+    void Awake() {
+        Instance = this;
         currentFloor = 1;
         spawnedRooms = new Dictionary<Vector2Int, GameObject>();
 
@@ -96,7 +90,7 @@ public class FloorGenerator : MonoBehaviour {
     }
 
     Vector2Int GetRandomPlacedRoomPos() {
-        // Convert dictionary keys to a list and pick one
+        // Convert dictionary keys to a list and pick one.
         List<Vector2Int> keys = new List<Vector2Int>(spawnedRooms.Keys);
         return keys[Random.Range(0, keys.Count)];
     }
@@ -111,20 +105,12 @@ bool AssignSpecialRoom(string type) {
                 continue;
             }
 
-            // Count neighbors to find dead ends.
+            // Count neighbors to find dead ends by checking each cardinal direction.
             int neighborCount = 0;
-            if (spawnedRooms.ContainsKey(pos + Vector2Int.up)) {
-                neighborCount++;
-            }
-            if (spawnedRooms.ContainsKey(pos + Vector2Int.down)) {
-                neighborCount++;
-            }
-            if (spawnedRooms.ContainsKey(pos + Vector2Int.left)) {
-                neighborCount++;
-            }
-            if (spawnedRooms.ContainsKey(pos + Vector2Int.right)) {
-                neighborCount++;
-            }
+            if (spawnedRooms.ContainsKey(pos + Vector2Int.up)) neighborCount++;
+            if (spawnedRooms.ContainsKey(pos + Vector2Int.down)) neighborCount++;
+            if (spawnedRooms.ContainsKey(pos + Vector2Int.left)) neighborCount++;
+            if (spawnedRooms.ContainsKey(pos + Vector2Int.right)) neighborCount++;
 
             // Use the name check to ensure we don't pick a room already converted to Boss/Item
             if (neighborCount == 1 && spawnedRooms[pos].name.Contains("Basic")) {
@@ -178,6 +164,7 @@ bool AssignSpecialRoom(string type) {
     }
 
     public void ResetFloor () {
+        // Destory every room for the current floor number
         foreach (var room in spawnedRooms) {
             Destroy(room.Value);
         }

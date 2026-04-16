@@ -2,18 +2,14 @@ using UnityEngine;
 
 public class DoorLogic : MonoBehaviour {
     [Header("Room References")]
-    private GameObject currentRoom;
-    private GameObject northRoom;
-    private GameObject southRoom;
-    private GameObject eastRoom;
-    private GameObject westRoom;
+    private GameObject currentRoom, northRoom, southRoom, eastRoom, westRoom;
 
     [Header("Misc")]
     private CameraScaling scaler;
     private GameObject player;
     private Vector3 spawnPoint;
 
-    void Start() {
+    void Awake() {
         // Initialize appropriate references.
         currentRoom = GetComponentInParent<RoomAttributes>().gameObject;
         northRoom = GetComponentInParent<RoomAttributes>().northRoom;
@@ -27,6 +23,7 @@ public class DoorLogic : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other) {
         string objectTag = other.tag;
 
+        // If player enters door trigger, teleport player into next room according to which direction door was entered.
         if (objectTag == "Player") {
             switch (gameObject.name) {
                 case "W_Door":

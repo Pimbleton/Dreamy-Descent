@@ -3,9 +3,7 @@ using UnityEngine;
 public class BulletCollision : MonoBehaviour {
     private PlayerStats playerStats;
 
-    void Awake() {
-        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-    }
+    void Awake() { playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>(); }
 
     void OnTriggerEnter2D(Collider2D other) {
         string objectTag = other.tag;

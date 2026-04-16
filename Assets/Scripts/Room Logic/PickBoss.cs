@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class PickBoss : MonoBehaviour
-{
+public class PickBoss : MonoBehaviour {
     public static string pickBoss(int floor) {
         int bossNum = Random.Range(0, 3);
 
@@ -14,8 +13,7 @@ public class PickBoss : MonoBehaviour
                 case 2:
                     return "Aquarius";
             }
-        }
-        else if (floor == 2) {
+        } else if (floor == 2) {
             switch (bossNum) {
                 case 0:
                     return "Pisces";
@@ -24,8 +22,7 @@ public class PickBoss : MonoBehaviour
                 case 2:
                     return "Scorpio";
             }
-        }
-        else if (floor == 3) {
+        } else if (floor == 3) {
             switch (bossNum) {
                 case 0:
                     return "Taurus";
@@ -34,8 +31,7 @@ public class PickBoss : MonoBehaviour
                 case 2:
                     return "Capricorn";
             }
-        }
-        else if (floor == 4) {
+        } else if (floor == 4) {
             switch (bossNum) {
                 case 0:
                     return "Sagittarius";
@@ -44,10 +40,8 @@ public class PickBoss : MonoBehaviour
                 case 2:
                     return "Aries";
             }
-        }
-        else if (floor == 5) {
+        } else if (floor == 5) {
             return "Ophiuchus";
-        }
-        return "";
+        } return "";
     }
 }

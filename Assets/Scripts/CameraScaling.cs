@@ -1,28 +1,19 @@
 using UnityEngine;
 
-public class CameraScaling : MonoBehaviour
-{
+public class CameraScaling : MonoBehaviour {
     private Camera cam;
     private SpriteRenderer currentBounds;
 
-    void Awake() {
-        cam = GetComponent<Camera>();
-    }
+    void Awake() { cam = GetComponent<Camera>(); }
 
-    // Ensures updating in real-time when window is rescaled.
-    void Update() {
-        if (currentBounds != null) {
-            ScaleCamera();
-        }
-    }
+    // Ensures window is scaled in real-time.
+    void Update() { if (currentBounds != null) ScaleCamera(); }
     
-    // This is called by RoomAttributes when a room is spawned
+    // Called by RoomAttributes when a room is spawned.
     public void UpdateBounds(SpriteRenderer newBounds) {
         currentBounds = newBounds;
         ScaleCamera();
     }
-
-
 
     public void ScaleCamera() {
         if (currentBounds == null || cam == null) return;
@@ -35,11 +26,11 @@ public class CameraScaling : MonoBehaviour
         float screenAspect = (float)Screen.width / (float)Screen.height;
         float roomAspect = roomWidth / roomHeight;
 
+        // If window is wider than the room, fit based on height.
+        // Else, fit based on width.
         if (screenAspect >= roomAspect) {
-            // If window is wider than the room, fit based on height.
             cam.orthographicSize = roomHeight / 2;
         } else {
-            // If window is narrower than the room, fit based on width.
             float differenceInSize = roomAspect / screenAspect;
             cam.orthographicSize = (roomHeight / 2) * differenceInSize;
         }

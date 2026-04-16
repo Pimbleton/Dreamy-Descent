@@ -1,22 +1,18 @@
 using UnityEngine;
 
 public class PlayerHurt : MonoBehaviour {
-    private GameObject player;
     private PlayerStats playerStats;
     private SpriteRenderer spriteRenderer;
-    private Rigidbody2D myRigidBody;
-    public HealthBar healthBar;
+    private HealthBar healthBar;
 
     private float invincibilityDuration;
     private bool isInvincible = false;
     private float invincibilityTimer = 0f;
-    public float flashSpeed = 20f; // Higher is faster blinking
+    private float flashSpeed = 20f;
 
     void Awake() {
-        player = GameObject.FindGameObjectWithTag("Player");
         playerStats = GetComponent<PlayerStats>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        myRigidBody = GetComponent<Rigidbody2D>();
         invincibilityDuration = playerStats.invincibilityDuration;
     }
 
@@ -41,7 +37,7 @@ public class PlayerHurt : MonoBehaviour {
             healthBar.UpdateHealthBar();
 
             if (playerStats.HP <= 0) {
-                DeathHandler.Instance.Die(player);
+                DeathHandler.Instance.Die(gameObject);
             }
         }
     }

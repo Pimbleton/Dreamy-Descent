@@ -2,21 +2,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour {
-    public static HealthBar Instance;
-
-    public Image healthBar;
+    private Image healthBar;
     private PlayerStats playerStats;
-    public GameObject player;
     private string folderPath = "HealthBars/HealthBar";
+
+    [HideInInspector] public static HealthBar Instance;
     
     void Awake() {
         Instance = this;
-        playerStats = player.GetComponent<PlayerStats>();
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
 
-    void Start() {
-        UpdateHealthBar();
-    }
+    void Start() { UpdateHealthBar(); }
 
     public void UpdateHealthBar() {
         int health = playerStats.HP;

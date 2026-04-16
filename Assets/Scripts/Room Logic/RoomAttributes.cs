@@ -27,70 +27,45 @@ public class RoomAttributes : MonoBehaviour {
         doorEast = transform.Find("E_Door")?.gameObject;
         doorWest = transform.Find("W_Door")?.gameObject;
 
-        if (doorNorth) {
-            resolverN = doorNorth.GetComponent<SpriteResolver>();
-        }
-        
-        if (doorSouth) {
-            resolverS = doorSouth.GetComponent<SpriteResolver>();
-        }
-        
-        if (doorEast) {
-            resolverE = doorEast.GetComponent<SpriteResolver>();
-        }
-        
-        if (doorWest) {
-            resolverW = doorWest.GetComponent<SpriteResolver>();
-        }
+        if (doorNorth) resolverN = doorNorth.GetComponent<SpriteResolver>();
+        if (doorSouth) resolverS = doorSouth.GetComponent<SpriteResolver>();
+        if (doorEast) resolverE = doorEast.GetComponent<SpriteResolver>();
+        if (doorWest) resolverW = doorWest.GetComponent<SpriteResolver>();
 
         playerCollidersContainer = transform.Find("PlayerCollider");  
         projectileCollidersContainer = transform.Find("ProjectileCollider");
 
         Transform boundsTransform = transform.Find("CameraBounds");
-        if (boundsTransform != null) {
-            cachedBounds = boundsTransform.GetComponent<SpriteRenderer>();
-        }
+        if (boundsTransform != null) cachedBounds = boundsTransform.GetComponent<SpriteRenderer>();
     }
 
     void Start() {
         // Initialize camera to fit room dimensions
-        if (gameObject.activeInHierarchy) {
-                InitializeCamera();
-        }
+        if (gameObject.activeInHierarchy) InitializeCamera();
 
         // Do initial room scan
         CheckIfCleared();
     }
 
-    void Update() {
-        // Keep watch for change in clear status of room if initially uncleared
-        if(!cleared && gameObject.activeInHierarchy) {
-            CheckIfCleared();
-        }
-    }
+    // Keep watch for change in clear status of room if initially uncleared
+    void Update() { if (!cleared && gameObject.activeInHierarchy) CheckIfCleared(); }
 
     public void InitializeCamera() {
         CameraScaling scaler = Camera.main.GetComponent<CameraScaling>();
         
-        if (scaler != null && cachedBounds != null) {
-            scaler.UpdateBounds(cachedBounds);
-        }
+        if (scaler != null && cachedBounds != null) scaler.UpdateBounds(cachedBounds);
     }
 
     public void SetupDoors(Dictionary<Vector2Int, GameObject> floorPlan) {  
-        // North
         bool hasNorth = floorPlan.TryGetValue(gridPos + Vector2Int.up, out northRoom);
         doorNorth.SetActive(hasNorth);
 
-        // South
         bool hasSouth = floorPlan.TryGetValue(gridPos + Vector2Int.down, out southRoom);
         doorSouth.SetActive(hasSouth);
 
-        // East
         bool hasEast = floorPlan.TryGetValue(gridPos + Vector2Int.right, out eastRoom);
         doorEast.SetActive(hasEast);
 
-        // West
         bool hasWest = floorPlan.TryGetValue(gridPos + Vector2Int.left, out westRoom);
         doorWest.SetActive(hasWest);
 
@@ -107,20 +82,15 @@ public class RoomAttributes : MonoBehaviour {
     }
 
     private void SetDoorState(GameObject doorObj, SpriteResolver resolver, string label) {
-        if (doorObj == null) {
-            return;
-        }
+        if (doorObj == null) return;
 
         // Swap to respective sprite
-        if (resolver != null) {
-            resolver.SetCategoryAndLabel("Doors", label);
-        }
+        if (resolver != null) resolver.SetCategoryAndLabel("Doors", label);
+
 
         // Toggles box collider
         BoxCollider2D col = doorObj.GetComponent<BoxCollider2D>();
-        if (cleared) {
-            Destroy(col);
-        }
+        if (cleared) Destroy(col);
     }
 
     void ApplyCollider(bool n, bool s, bool e, bool w) {
@@ -181,9 +151,7 @@ public class RoomAttributes : MonoBehaviour {
         if (!enemyFound) {
             cleared = true;
 
-            if (!previousState) {
-                SpawnReward();
-            }
+            if (!previousState) SpawnReward();
 
             previousState = true;
             UpdateDoorStates();
@@ -196,8 +164,8 @@ public class RoomAttributes : MonoBehaviour {
 
     private void SpawnReward() {
         int randInt = Random.Range(0, 10);
-        if (randInt > 7) {
-            Instantiate(Resources.Load<GameObject>("Prefabs/Pickups/HeartPickup"), transform.position, Quaternion.identity, transform);
-        }
+
+        // Spawn a health pickup if randInt is greater than 7 (8 or 9).
+        if (randInt > 7) Instantiate(Resources.Load<GameObject>("Prefabs/Pickups/HeartPickup"), transform.position, Quaternion.identity, transform);
     }
 }

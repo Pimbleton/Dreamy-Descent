@@ -7,9 +7,7 @@ public class PauseLogic : MonoBehaviour {
     public Button ResumeButton, TitleButton, DesktopButton;
     public bool isPaused = false;
 
-    void Awake() {
-        PauseMenu.SetActive(false);
-    }
+    void Awake() { PauseMenu.SetActive(false); }
     
     void Start() {
         ResumeButton.onClick.AddListener(() => {isPaused = false; PressResumeButton();});
@@ -18,15 +16,12 @@ public class PauseLogic : MonoBehaviour {
     }
 
     void Update() {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame) {
-            isPaused = !isPaused;
-        }
+        if (Keyboard.current.escapeKey.wasPressedThisFrame) isPaused = !isPaused;
 
         if (!isPaused) {
             PauseMenu.SetActive(false);
             Time.timeScale = 1f;
-        }
-        else {
+        } else {
             PauseMenu.SetActive(true);
             Time.timeScale = 0f;
         }

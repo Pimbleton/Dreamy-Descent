@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class ExitGame : MonoBehaviour
-{
-    public void QuitGame()
-    {
+public class ExitGame : MonoBehaviour {
+    public void QuitGame() {
         Application.Quit();
 
         #if UNITY_EDITOR
