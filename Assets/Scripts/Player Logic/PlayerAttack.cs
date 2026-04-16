@@ -2,11 +2,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour {
-    private PlayerStats playerStats;
+    [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private GameObject PlayerProjectilePrefab;
+
     private float nextProjectileAvailability = 0f;
-    private GameObject PlayerProjectilePrefab;
-    
-    void Awake() { playerStats = GetComponent<PlayerStats>(); }
     
     void Update() {
         if (Keyboard.current.upArrowKey.isPressed ||

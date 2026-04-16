@@ -11,6 +11,7 @@ public class HealthBar : MonoBehaviour {
     void Awake() {
         Instance = this;
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        healthBar = GetComponent<Image>();
     }
 
     void Start() { UpdateHealthBar(); }

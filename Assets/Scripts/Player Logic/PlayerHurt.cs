@@ -1,20 +1,16 @@
 using UnityEngine;
 
 public class PlayerHurt : MonoBehaviour {
-    private PlayerStats playerStats;
-    private SpriteRenderer spriteRenderer;
-    private HealthBar healthBar;
+    [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private HealthBar healthBar;
 
     private float invincibilityDuration;
     private bool isInvincible = false;
     private float invincibilityTimer = 0f;
     private float flashSpeed = 20f;
 
-    void Awake() {
-        playerStats = GetComponent<PlayerStats>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        invincibilityDuration = playerStats.invincibilityDuration;
-    }
+    void Awake() { invincibilityDuration = playerStats.invincibilityDuration; }
 
     void Update() {
         if (isInvincible) {

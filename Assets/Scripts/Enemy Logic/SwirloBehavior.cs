@@ -3,21 +3,17 @@ using UnityEngine;
 public class SwirloBehavior : MonoBehaviour {
     [SerializeField] private EnemyData baseEnemyData;
     private EnemyData uniqueEnemyData;
-    private Rigidbody2D myRigidBody;
 
+    [SerializeField] private MoveTowardPlayer moveScript;
+    [SerializeField] private EnemyHurt hurtScript;
+    
     private float knockbackTimer = 0f;
-    private float knockbackDuration = 0.2f;
-
-    private Transform playerTransform;
+    private float knockbackDuration = 0.1f;
 
     void Awake() {
         uniqueEnemyData = Instantiate(baseEnemyData);
-        myRigidBody = gameObject.GetComponent<Rigidbody2D>();
 
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null) {
-            playerTransform = playerObj.transform;
-        }
+        hurtScript.Initialize(uniqueEnemyData);
     }
 
     void FixedUpdate() {
@@ -25,37 +21,22 @@ public class SwirloBehavior : MonoBehaviour {
             knockbackTimer -= Time.fixedDeltaTime;
         } 
         else {
-            MoveTowardsPlayer();
+            moveScript.Move(uniqueEnemyData.movementSpeed);
         }
     }
 
-    void MoveTowardsPlayer() {
-        if (playerTransform != null) {
-            Vector2 direction = (playerTransform.position - transform.position).normalized;
-            myRigidBody.linearVelocity = direction * uniqueEnemyData.movementSpeed;
-        }
-        else {
-            myRigidBody.linearVelocity = Vector2.zero;
-        }
+    public void OnHit(float damage, float knockback, Vector3 sourcePos) {
+        hurtScript.TakeDamage(damage, knockback, sourcePos);
+        knockbackTimer = knockbackDuration;
     }
 
-    public void EnemyTakeDamage(float damage, float knockback) {
-        uniqueEnemyData.HP -= damage;
-
-        if (uniqueEnemyData.HP <= 0) {
-            Destroy(gameObject);
-            return;
-        }
+    public void StartKnockback() {
+        if (knockbackDuration == 0) return;
 
         knockbackTimer = knockbackDuration;
-        Vector2 knockbackDirection = (transform.position - playerTransform.position).normalized;
-        myRigidBody.linearVelocity = Vector2.zero;
-        myRigidBody.AddForce(knockbackDirection * knockback, ForceMode2D.Impulse);  
     }
 
     void OnCollisionStay2D (Collision2D other) {
-        if (other.gameObject.CompareTag("Player")) { 
-            other.gameObject.GetComponent<PlayerHurt>().PlayerTakeDamage(uniqueEnemyData.contactDamage); 
-        }
+        if (other.gameObject.CompareTag("Player")) { other.gameObject.GetComponent<PlayerHurt>().PlayerTakeDamage(uniqueEnemyData.contactDamage); }
     }
 }

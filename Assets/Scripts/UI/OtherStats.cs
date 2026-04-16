@@ -9,6 +9,7 @@ public class OtherStats : MonoBehaviour {
     void Awake() {
         Instance = this;
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        statsText = GetComponent<TextMeshProUGUI>();
     }
     
     void Start() { printStats(); }
