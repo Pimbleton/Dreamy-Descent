@@ -87,7 +87,6 @@ public class RoomAttributes : MonoBehaviour {
         // Swap to respective sprite
         if (resolver != null) resolver.SetCategoryAndLabel("Doors", label);
 
-
         // Toggles box collider
         BoxCollider2D col = doorObj.GetComponent<BoxCollider2D>();
         if (cleared) Destroy(col);

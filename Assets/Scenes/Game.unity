@@ -2033,11 +2033,11 @@ GameObject:
   - component: {fileID: 1447548067}
   - component: {fileID: 1447548068}
   - component: {fileID: 1447548070}
-  - component: {fileID: 1447548071}
-  - component: {fileID: 1447548075}
-  - component: {fileID: 1447548072}
   - component: {fileID: 1447548069}
+  - component: {fileID: 1447548072}
+  - component: {fileID: 1447548071}
   - component: {fileID: 1447548073}
+  - component: {fileID: 1447548075}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2216,9 +2216,9 @@ MonoBehaviour:
   projectileCooldown: 0.5
   projectileDamage: 2
   projectileRange: 1
-  projectileSpeed: 5
+  projectileSpeed: 6
   projectileKnockback: 5
-  invincibilityDuration: 2
+  invincibilityDuration: 1
 --- !u!114 &1447548072
 MonoBehaviour:
   m_ObjectHideFlags: 0
