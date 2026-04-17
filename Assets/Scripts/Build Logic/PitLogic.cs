@@ -3,9 +3,9 @@ using UnityEngine;
 public class PitLogic : MonoBehaviour {
     private GameObject player;
 
-    void Awake() { player = GameObject.FindGameObjectWithTag("Player"); }
-
-    void Start() { gameObject.SetActive(false); }
+    void Awake() { 
+        player = GameObject.FindGameObjectWithTag("Player"); 
+    }
 
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {

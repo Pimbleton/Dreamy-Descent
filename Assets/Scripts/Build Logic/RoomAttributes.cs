@@ -20,6 +20,7 @@ public class RoomAttributes : MonoBehaviour {
     private SpriteResolver resolverN, resolverE, resolverS, resolverW;
     public string roomType;
     public Vector2Int gridPos;
+    [SerializeField] private GameObject pitObject;
 
     void Awake() {
         doorNorth = transform.Find("N_Door")?.gameObject;
@@ -151,6 +152,10 @@ public class RoomAttributes : MonoBehaviour {
             cleared = true;
 
             if (!previousState) SpawnReward();
+
+            if (roomType == "Boss") {
+                BossObjectsBehavior.Instance.ShowObjects();
+            }
 
             previousState = true;
             UpdateDoorStates();

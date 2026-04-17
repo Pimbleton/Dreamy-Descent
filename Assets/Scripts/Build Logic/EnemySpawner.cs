@@ -6,6 +6,9 @@ public class EnemySpawner : MonoBehaviour {
     [Header("Enemy Prefabs")]
     [SerializeField] private GameObject[] enemyPrefabs;
 
+    [Header("Boss Prefabs")]
+    [SerializeField] private GameObject[] bossPrefabs;
+
     void Awake() { Instance = this; }
 
     public void PopulateRoom(GameObject room) {
@@ -26,5 +29,13 @@ public class EnemySpawner : MonoBehaviour {
 
         // Instantiate and set the room as the parent
         Instantiate(prefab, spawnPos, Quaternion.identity, roomParent);
+    }
+
+    public void SpawnBoss(Transform roomParent) {
+        // For simplicity, we'll just spawn the first boss prefab as the boss.
+        GameObject bossPrefab = bossPrefabs[0];
+
+        // Spawn the boss at the center of the room.
+        Instantiate(bossPrefab, roomParent.position, Quaternion.identity, roomParent);
     }
 }

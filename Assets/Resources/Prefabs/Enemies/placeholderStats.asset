@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d185e8d56b67c6042ad9b79b29089070, type: 3}
-  m_Name: swirloStats
+  m_Name: placeholderStats
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  enemyName: Swirlo
-  HP: 10
-  maxHP: 10
-  contactDamage: 1
+  enemyName: Placeholder
+  HP: 3
+  maxHP: 0
+  contactDamage: 0
   projectileDamage: 0
   projectileRangeStat: 0
   projectileSpeedStat: 0
-  movementSpeed: 3
+  movementSpeed: 0
   knockbackDuration: 0
   knockbackTimer: 0
