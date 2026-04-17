@@ -49,13 +49,18 @@ public class FloorGenerator : MonoBehaviour {
             return;
         }
         
-        // Setup doors for all rooms after all have been placed.
         foreach (var room in spawnedRooms) {
-            room.Value.GetComponent<RoomAttributes>().SetupDoors(spawnedRooms);
+            RoomAttributes attr = room.Value.GetComponent<RoomAttributes>();
 
-            if (!room.Value.GetComponent<RoomAttributes>().name.Contains("Start")) {
-                 room.Value.SetActive(false);
-            }
+            // Setup Doors
+            attr.SetupDoors(spawnedRooms);
+
+            // Only spawn enemies in "Basic" rooms.
+            if (attr.roomType == "Basic") EnemySpawner.Instance.PopulateRoom(room.Value);
+            
+
+            // Deactivate non-start rooms upon entry of the floor.
+            if (!attr.name.Contains("Start")) room.Value.SetActive(false);
         }
 
         // Sets start room as default active room and initializes the camera to focus on it.
@@ -150,6 +155,7 @@ bool AssignSpecialRoom(string type) {
 
             // Update the GridPos in the new room's RoomAttributes
             newRoom.GetComponent<RoomAttributes>().gridPos = targetPos;
+            newRoom.GetComponent<RoomAttributes>().roomType = type;
 
             // Destroy the old "Basic" room GameObject
             Destroy(oldRoom);
@@ -175,6 +181,7 @@ bool AssignSpecialRoom(string type) {
     }
 
     void resolveFloorPreset(int floor) {
+        // Base don floor number, set the min and max room count for that floor's generation.
         switch (floor) {
             case 1:
                 minRooms = 6;
