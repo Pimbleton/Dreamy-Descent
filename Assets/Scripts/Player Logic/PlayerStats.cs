@@ -14,9 +14,9 @@ public class PlayerStats : MonoBehaviour {
     public float projectileCooldown = 0.5f;
     public float projectileDamage = 2f;
     public float projectileRange = 1f;
-    public float projectileSpeed = 5f;
+    public float projectileSpeed = 6f;
     public float projectileKnockback = 5f;
 
     [Header("Misc Stats")]
-    public float invincibilityDuration = 2f;
+    public float invincibilityDuration = 1.5f;
 }
