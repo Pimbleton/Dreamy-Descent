@@ -100,7 +100,7 @@ public class FloorGenerator : MonoBehaviour {
         return keys[Random.Range(0, keys.Count)];
     }
 
-bool AssignSpecialRoom(string type) {
+    bool AssignSpecialRoom(string type) {
         List<Vector2Int> deadEnds = new List<Vector2Int>();
 
         foreach (var entry in spawnedRooms) {
@@ -141,6 +141,7 @@ bool AssignSpecialRoom(string type) {
             case "Boss":
                 string bossName = PickBoss.pickBoss(currentFloor);
                 newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/Rooms/Floor{currentFloor}/" + bossName + "_Room"), spawnPos, Quaternion.identity);
+                EnemySpawner.Instance.SpawnBoss(newRoom.transform);
                 break;
             case "Item":
                 newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/Rooms/Floor{currentFloor}/Item_Room"), spawnPos, Quaternion.identity);

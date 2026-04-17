@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SwirloBehavior : MonoBehaviour {
+public class SwirloBehavior : MonoBehaviour, IKnockbackable {
     [SerializeField] private EnemyData baseEnemyData;
     private EnemyData uniqueEnemyData;
 
@@ -31,8 +31,6 @@ public class SwirloBehavior : MonoBehaviour {
     }
 
     public void StartKnockback() {
-        if (knockbackDuration == 0) return;
-
         knockbackTimer = knockbackDuration;
     }
 

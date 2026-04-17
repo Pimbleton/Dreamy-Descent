@@ -1736,6 +1736,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemyPrefabs:
   - {fileID: 8138763860791806326, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
+  bossPrefabs:
+  - {fileID: 7793904846086028121, guid: 8452c947cf3788842a336ff48d543188, type: 3}
 --- !u!1 &1334089289
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,7 +2225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6f6672f72a44e4c8578b1da85e726e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  moveSpeed: 5
+  moveSpeed: 4
   acceleration: 100
   deceleration: 100
   HP: 5
