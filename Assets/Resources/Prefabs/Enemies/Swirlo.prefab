@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2685040777154402144}
   - component: {fileID: 6455737749147388874}
   - component: {fileID: 6453509799341422014}
-  - component: {fileID: 6493681876688325144}
   - component: {fileID: 9218194123362596176}
+  - component: {fileID: 7696558221380146605}
   m_Layer: 0
   m_Name: Swirlo
   m_TagString: Enemy
@@ -171,21 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicEnemy
   baseEnemyData: {fileID: 11400000, guid: bfed216bb421ff342b68ce50353c1f58, type: 2}
-  moveScript: {fileID: 6493681876688325144}
+  moveScript: {fileID: 7696558221380146605}
   hurtScript: {fileID: 9218194123362596176}
---- !u!114 &6493681876688325144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8138763860791806326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383c81b667d042644afdeda316f0e574, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MoveTowardPlayer
-  enemyRigidBody: {fileID: 2685040777154402144}
 --- !u!114 &9218194123362596176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,4 +186,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHurt
   enemyRigidBody: {fileID: 2685040777154402144}
-  mainBehavior: {fileID: 6453509799341422014}
+  spriteRenderer: {fileID: 7546350711604965989}
+--- !u!114 &7696558221380146605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138763860791806326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37012f0bd0e0e7048af580f512440735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  enemyRigidBody: {fileID: 2685040777154402144}

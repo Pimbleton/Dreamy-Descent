@@ -1,14 +1,15 @@
 using UnityEngine;
 
-public class SwirloBehavior : MonoBehaviour, IKnockbackable {
+public class CloudoBehavior : MonoBehaviour, IKnockbackable, IEnemyStats {
     [SerializeField] private EnemyData baseEnemyData;
-    private EnemyData uniqueEnemyData;
+    public EnemyData uniqueEnemyData;
+    public EnemyData GetStats() => uniqueEnemyData;
 
     [SerializeField] private EnemyMovement moveScript;
     [SerializeField] private EnemyHurt hurtScript;
-    
+
     private float knockbackTimer = 0f;
-    private float knockbackDuration = 0.1f;
+    private float knockbackDuration = 0f;
 
     void Awake() {
         uniqueEnemyData = Instantiate(baseEnemyData);
@@ -27,9 +28,5 @@ public class SwirloBehavior : MonoBehaviour, IKnockbackable {
 
     public void StartKnockback() {
         knockbackTimer = knockbackDuration;
-    }
-
-    void OnCollisionStay2D (Collision2D other) {
-        if (other.gameObject.CompareTag("Player")) { other.gameObject.GetComponent<PlayerHurt>().PlayerTakeDamage(uniqueEnemyData.contactDamage); }
     }
 }

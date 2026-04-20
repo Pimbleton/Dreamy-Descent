@@ -1736,6 +1736,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemyPrefabs:
   - {fileID: 8138763860791806326, guid: b413aaa829feb6740a09c0c7c67cf2fb, type: 3}
+  - {fileID: 7304157129195964019, guid: 378d94ee0317cee418a3f9ecbcc26f68, type: 3}
+  - {fileID: 6735393712048514693, guid: caa20a2226f139b479e11d4cc7509355, type: 3}
   bossPrefabs:
   - {fileID: 7793904846086028121, guid: 8452c947cf3788842a336ff48d543188, type: 3}
 --- !u!1 &1334089289
@@ -2124,7 +2126,7 @@ SpriteRenderer:
   m_SortingLayerID: -1114046369
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1416604817420825889, guid: 670121bb764940249a0ceda0fde8a5cb, type: 3}
+  m_Sprite: {fileID: 4334783836991956000, guid: ab829df9feb85af4fadaf07d0f76d4be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
