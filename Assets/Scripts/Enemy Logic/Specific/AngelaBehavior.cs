@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class SwirloBehavior : MonoBehaviour, IKnockbackable {
+public class AngelaBehavior : MonoBehaviour, IKnockbackable {
     [SerializeField] private EnemyData baseEnemyData;
     private EnemyData uniqueEnemyData;
 
     [SerializeField] private EnemyMovement moveScript;
     [SerializeField] private EnemyHurt hurtScript;
-    
+
     private float knockbackTimer = 0f;
     private float knockbackDuration = 0.1f;
 
@@ -21,15 +21,11 @@ public class SwirloBehavior : MonoBehaviour, IKnockbackable {
             knockbackTimer -= Time.fixedDeltaTime;
         } 
         else {
-            moveScript.MoveTowardsFromAnywhere(uniqueEnemyData.movementSpeed);
+            moveScript.MoveRandomly(uniqueEnemyData.movementSpeed);
         }
     }
 
     public void StartKnockback() {
         knockbackTimer = knockbackDuration;
-    }
-
-    void OnCollisionStay2D (Collision2D other) {
-        if (other.gameObject.CompareTag("Player")) { other.gameObject.GetComponent<PlayerHurt>().PlayerTakeDamage(uniqueEnemyData.contactDamage); }
     }
 }

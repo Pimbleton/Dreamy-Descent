@@ -10,7 +10,11 @@ public class PlayerHurt : MonoBehaviour {
     private float invincibilityTimer = 0f;
     private float flashSpeed = 20f;
 
-    void Awake() { invincibilityDuration = playerStats.invincibilityDuration; }
+    public static PlayerHurt Instance;
+
+    void Awake() { 
+        invincibilityDuration = playerStats.invincibilityDuration;
+    }
 
     void Update() {
         if (isInvincible) {
@@ -27,7 +31,7 @@ public class PlayerHurt : MonoBehaviour {
     }
 
     public void PlayerTakeDamage(int damage) {
-        if (!isInvincible) {
+        if (!isInvincible && damage > 0) {
             playerStats.HP -= damage;
             isInvincible = true;
             healthBar.UpdateHealthBar();

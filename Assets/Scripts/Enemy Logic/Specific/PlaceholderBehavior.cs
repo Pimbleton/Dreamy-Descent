@@ -16,7 +16,7 @@ public class PlaceholderBehavior : MonoBehaviour {
     }
 
     public void OnHit(float damage, float knockback, Vector3 sourcePos) {
-        hurtScript.TakeDamage(damage, knockback, sourcePos);
+        hurtScript.EnemyTakeDamage(damage, knockback, sourcePos);
         knockbackTimer = knockbackDuration;
     }
 

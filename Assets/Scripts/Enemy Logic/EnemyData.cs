@@ -10,12 +10,8 @@ public class EnemyData : ScriptableObject {
     public float HP = 0;
     public int maxHP = 0;
     public int contactDamage = 0;
-    public float projectileDamage = 0;
-    public float projectileRangeStat = 0;
-    public float projectileSpeedStat = 0;
+    public int projectileDamage = 0;
+    public float projectileRange = 0;
+    public float projectileSpeed = 0;
     public float movementSpeed = 0;
-
-    [Header("Knockback Fields")]
-    public float knockbackDuration = 0;
-    public float knockbackTimer = 0;
 }

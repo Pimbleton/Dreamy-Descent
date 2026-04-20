@@ -194,3 +194,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHurt
   enemyRigidBody: {fileID: 9152403883973433988}
+  spriteRenderer: {fileID: 5594813960575828665}
