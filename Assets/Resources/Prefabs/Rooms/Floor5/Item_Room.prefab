@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1973428550355813727
+--- !u!1001 &8938937065240880044
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -26,19 +26,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4024918327734327499, guid: be05483dbbc7b6440a65d03c95b9a86e, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4024918327734327499, guid: be05483dbbc7b6440a65d03c95b9a86e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4024918327734327499, guid: be05483dbbc7b6440a65d03c95b9a86e, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4024918327734327499, guid: be05483dbbc7b6440a65d03c95b9a86e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4024918327734327499, guid: be05483dbbc7b6440a65d03c95b9a86e, type: 3}
       propertyPath: m_SizeDelta.x
@@ -78,11 +78,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4024918327734327499, guid: be05483dbbc7b6440a65d03c95b9a86e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -6.41568
       objectReference: {fileID: 0}
     - target: {fileID: 4024918327734327499, guid: be05483dbbc7b6440a65d03c95b9a86e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 4.0086
       objectReference: {fileID: 0}
     - target: {fileID: 4024918327734327499, guid: be05483dbbc7b6440a65d03c95b9a86e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -99,7 +99,7 @@ PrefabInstance:
     - target: {fileID: 4382591073108053657, guid: be05483dbbc7b6440a65d03c95b9a86e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -3661729267775151422, guid: 2d2e677c499f0324d992d1254d404c11, type: 3}
+      objectReference: {fileID: -2985351641509127283, guid: 7e295e9c72a7f0c46a365823f5cbc9c3, type: 3}
     - target: {fileID: 4770281076999724714, guid: be05483dbbc7b6440a65d03c95b9a86e, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -126,7 +126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170660962011356132, guid: be05483dbbc7b6440a65d03c95b9a86e, type: 3}
       propertyPath: m_Name
-      value: Item_Room
+      value: Item_Room Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
