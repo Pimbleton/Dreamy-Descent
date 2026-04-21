@@ -9,7 +9,9 @@ public class EnemySpawner : MonoBehaviour {
     [Header("Boss Prefabs")]
     [SerializeField] private GameObject[] bossPrefabs;
 
-    void Awake() { Instance = this; }
+    void Awake() {
+        Instance = this;
+    }
 
     public void PopulateRoom(GameObject room) {
         // Determine number of enemies, ranging from 0 to 3 enemies in a room.

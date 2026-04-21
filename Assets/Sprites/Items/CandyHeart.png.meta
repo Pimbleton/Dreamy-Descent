@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 707e3d499d2c2da419d823843b6a68c7
+guid: a734eb8f5a45728469e7d6ee9d442e08
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6665081934414036210
-    second: CloudBoots_0
+      213: 8809188494084577483
+    second: CandyHeart_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CloudBoots_0
+      name: CandyHeart_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2fc3f9bc4b02f7c50800000000000000
-      internalID: 6665081934414036210
+      spriteID: bc89e552346804a70800000000000000
+      internalID: 8809188494084577483
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 38cc9beb8e762a5469a51a2776e1220e
+    spriteID: c08e7b12641aa214987ec2800286a0de
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CloudBoots_0: 6665081934414036210
+      CandyHeart_0: 8809188494084577483
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

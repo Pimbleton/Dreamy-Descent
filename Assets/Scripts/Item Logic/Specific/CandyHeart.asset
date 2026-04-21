@@ -10,17 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b29e08aad1a01574dbeb690a0183dec2, type: 3}
-  m_Name: CloudBoots
+  m_Name: CandyHeart
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: CloudBoots
-  itemDescription: "Cloud Boots \nYour steps feel lighter (And slightly damper...)\nMovement
-    Speed Up!"
-  HPStat: 0
-  maxHPStat: 0
+  itemName: Candy Heart
+  itemDescription: 'Candy Heart
+
+    A sweet treat that helps when beat!
+
+    HP+,
+    Max HP+'
+  HPStat: 1
+  maxHPStat: 1
   projectileDamageStat: 0
   projectileRangeStat: 0
   projectileSpeedStat: 0
   projectileKnockbackStat: 0
   projectileCooldownStat: 0
-  speedStat: 0.1
+  speedStat: 0
   invincibilityDurationStat: 0

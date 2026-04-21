@@ -2235,8 +2235,8 @@ MonoBehaviour:
   projectileCooldown: 0.5
   projectileDamage: 2
   projectileRange: 1
-  projectileSpeed: 6
-  projectileKnockback: 5
+  projectileSpeed: 5
+  projectileKnockback: 2
   invincibilityDuration: 1
 --- !u!114 &1447548072
 MonoBehaviour:
