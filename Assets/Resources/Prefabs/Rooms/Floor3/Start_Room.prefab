@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5025110248740552119
+--- !u!1001 &3509135145728798130
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,23 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 713304495904268215, guid: 765d851419a773542be1eb58a7389914, type: 3}
       propertyPath: m_Name
-      value: Start_Room
+      value: Start_Room Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 932954051690337925, guid: 765d851419a773542be1eb58a7389914, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2759316901751325531, guid: 6704f6d64e2db774fb841c1eee8a2b18, type: 3}
-    - target: {fileID: 1242224160920555760, guid: 765d851419a773542be1eb58a7389914, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -3918281519615432603, guid: e48f80df68f8b5147a5216ad5b332e48, type: 3}
     - target: {fileID: 2145411092281604033, guid: 765d851419a773542be1eb58a7389914, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3071818
+      value: 1.2599343
       objectReference: {fileID: 0}
     - target: {fileID: 2145411092281604033, guid: 765d851419a773542be1eb58a7389914, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.901
+      value: 4.883
       objectReference: {fileID: 0}
     - target: {fileID: 2858737557269768854, guid: 765d851419a773542be1eb58a7389914, type: 3}
       propertyPath: m_Sprite
@@ -36,10 +28,6 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5315085308164639346, guid: 765d851419a773542be1eb58a7389914, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -9032891777064295685, guid: bbadb0b46e21e4c4aadb5ce4356c3e20, type: 3}
     - target: {fileID: 5783002834872436362, guid: 765d851419a773542be1eb58a7389914, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -110,11 +98,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5851695528285279542, guid: 765d851419a773542be1eb58a7389914, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -5.83
       objectReference: {fileID: 0}
     - target: {fileID: 5851695528285279542, guid: 765d851419a773542be1eb58a7389914, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.53025
       objectReference: {fileID: 0}
     - target: {fileID: 5851695528285279542, guid: 765d851419a773542be1eb58a7389914, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -136,30 +124,18 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7145483171717517381, guid: 765d851419a773542be1eb58a7389914, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.270958
-      objectReference: {fileID: 0}
-    - target: {fileID: 7145483171717517381, guid: 765d851419a773542be1eb58a7389914, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.88
-      objectReference: {fileID: 0}
     - target: {fileID: 7576258338999898597, guid: 765d851419a773542be1eb58a7389914, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -3661729267775151422, guid: 2d2e677c499f0324d992d1254d404c11, type: 3}
+      objectReference: {fileID: 1319279829047550866, guid: 4be4a5a52ae30864ba65e84dfceaf039, type: 3}
     - target: {fileID: 7740413109849933070, guid: 765d851419a773542be1eb58a7389914, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2670057
+      value: 1.2673873
       objectReference: {fileID: 0}
     - target: {fileID: 7740413109849933070, guid: 765d851419a773542be1eb58a7389914, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.086
+      value: 9.09
       objectReference: {fileID: 0}
-    - target: {fileID: 7753169634560310331, guid: 765d851419a773542be1eb58a7389914, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 7505658165752249392, guid: 081237f81f3c89441a8d5d6c827eec18, type: 3}
     - target: {fileID: 7816174403990044148, guid: 765d851419a773542be1eb58a7389914, type: 3}
       propertyPath: m_Sprite
       value: 

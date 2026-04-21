@@ -3,9 +3,11 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class DeathHandler : MonoBehaviour {
-    [HideInInspector] public static DeathHandler Instance;
+    public static DeathHandler Instance;
 
-    void Awake() { Instance = this; }
+    void Awake() {
+        Instance = this;
+    }
 
     public void Die(GameObject entity) {
         // If player dies, start game over countdown
