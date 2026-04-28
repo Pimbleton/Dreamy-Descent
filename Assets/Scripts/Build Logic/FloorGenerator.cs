@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Mono.Cecil;
 using UnityEngine;
 
 public class FloorGenerator : MonoBehaviour {
@@ -6,6 +7,7 @@ public class FloorGenerator : MonoBehaviour {
     private int minRooms;
     private int maxRooms;
     [HideInInspector] public int currentFloor;
+    [SerializeField] AudioSource audioSource;
     private Dictionary<Vector2Int, GameObject> spawnedRooms;
     
 
@@ -15,6 +17,9 @@ public class FloorGenerator : MonoBehaviour {
         Instance = this;
         currentFloor = 1;
         spawnedRooms = new Dictionary<Vector2Int, GameObject>();
+
+        audioSource.clip = Resources.Load<AudioClip>("Sounds/Music/f1Music");
+        audioSource.Play();
 
         // Sets floor preset to 1 and generates the floor.
         resolveFloorPreset(currentFloor);

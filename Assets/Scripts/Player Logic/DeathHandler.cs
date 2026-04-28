@@ -14,7 +14,7 @@ public class DeathHandler : MonoBehaviour {
         if (entity.CompareTag("Player")) {
             Destroy(entity);
             GameOverUI.Instance.summonGameOverPopup();
-            Instance.StartCoroutine(Instance.DeathTimerRoutine());
+            StartCoroutine(DeathTimerRoutine());
         } else {
             Destroy(entity);
         }

@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Angela
   HP: 4
-  maxHP: 4
+  maxHP: 5
   contactDamage: 0
   projectileDamage: 0
-  projectileRangeStat: 0
-  projectileSpeedStat: 0
+  projectileRange: 0
+  projectileSpeed: 0
   movementSpeed: 2
-  knockbackDuration: 0
-  knockbackTimer: 0

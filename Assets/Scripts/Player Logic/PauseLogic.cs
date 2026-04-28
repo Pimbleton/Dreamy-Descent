@@ -7,7 +7,9 @@ public class PauseLogic : MonoBehaviour {
     public Button ResumeButton, TitleButton, DesktopButton;
     public bool isPaused = false;
 
-    void Awake() { PauseMenu.SetActive(false); }
+    void Awake() { 
+        PauseMenu.SetActive(false);
+    }
     
     void Start() {
         ResumeButton.onClick.AddListener(() => {isPaused = false; PressResumeButton();});
@@ -17,6 +19,8 @@ public class PauseLogic : MonoBehaviour {
 
     void Update() {
         if (Keyboard.current.escapeKey.wasPressedThisFrame) isPaused = !isPaused;
+
+        if (GameObject.FindWithTag("Player") == null) return; // Stop running Pause logic if the player is dead
 
         if (!isPaused) {
             PauseMenu.SetActive(false);
