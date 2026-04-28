@@ -8,6 +8,7 @@ public class DoorLogic : MonoBehaviour {
     private CameraScaling scaler;
     private GameObject player;
     private Vector3 spawnPoint;
+    private static bool isTransitioning = false;
 
     void Start() {
         // Initialize appropriate references.
@@ -21,35 +22,42 @@ public class DoorLogic : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        string objectTag = other.tag;
+        if (other.CompareTag("Player") && !isTransitioning) {
+            GameObject targetRoom = null;
 
-        // If player enters door trigger, teleport player into next room according to which direction door was entered.
-        if (objectTag == "Player") {
+            // If player enters door trigger, teleport player into next room according to which direction door was entered.
             switch (gameObject.name) {
                 case "W_Door":
-                    westRoom.SetActive(true);
-                    MoveCamera(westRoom);
+                    targetRoom = westRoom;
                     spawnPoint = new Vector3(westRoom.transform.position.x + 8f, westRoom.transform.position.y, 0f);
                     break;
                 case "E_Door":
-                    eastRoom.SetActive(true);
-                    MoveCamera(eastRoom);
+                    targetRoom = eastRoom;
                     spawnPoint = new Vector3(eastRoom.transform.position.x - 8f, eastRoom.transform.position.y, 0f);
                     break;
                 case "N_Door":
-                    northRoom.SetActive(true);
-                    MoveCamera(northRoom);
+                    targetRoom = northRoom;
                     spawnPoint = new Vector3(northRoom.transform.position.x, northRoom.transform.position.y - 3.9f, 0f);
                     break;
                 case "S_Door":
-                    southRoom.SetActive(true);
-                    MoveCamera(southRoom);
+                    targetRoom = southRoom;
                     spawnPoint = new Vector3(southRoom.transform.position.x, southRoom.transform.position.y + 3.9f, 0f);
                     break;
             }
 
-            player.transform.position = spawnPoint;
-            currentRoom.SetActive(false);
+            if (targetRoom != null) {
+                isTransitioning = true;
+                GameObject oldRoom = currentRoom;
+
+                targetRoom.SetActive(true);
+                player.transform.position = spawnPoint;
+
+                StartCoroutine(CameraTransition.Instance.SlideToRoom(targetRoom.transform.position, () => {
+                    oldRoom.SetActive(false);
+                    MoveCamera(targetRoom);
+                    isTransitioning = false;
+                }));
+            }
         }
     }
 
