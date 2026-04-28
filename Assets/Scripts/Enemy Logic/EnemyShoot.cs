@@ -4,6 +4,8 @@ public class EnemyShoot : MonoBehaviour {
     [SerializeField] private EnemyData baseEnemyData;
     private EnemyData uniqueEnemyData;
     [SerializeField] private GameObject PlayerProjectilePrefab;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip shootSound;
 
     private float nextProjectileAvailability = 0f;
     private GameObject player;
@@ -26,6 +28,8 @@ public class EnemyShoot : MonoBehaviour {
 
         Vector2 direction = (player.transform.position - transform.position).normalized;
         rb.linearVelocity = direction * projectileSpeed;
+
+        audioSource.PlayOneShot(shootSound, .5f);
 
         Destroy(bullet, uniqueEnemyData.projectileRange);
     }

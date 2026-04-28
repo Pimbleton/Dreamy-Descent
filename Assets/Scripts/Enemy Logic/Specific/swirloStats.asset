@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: swirloStats
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Swirlo
-  HP: 10
-  maxHP: 10
+  HP: 8
+  maxHP: 8
   contactDamage: 1
   projectileDamage: 0
-  projectileRangeStat: 0
-  projectileSpeedStat: 0
+  projectileRange: 0
+  projectileSpeed: 0
   movementSpeed: 3
-  knockbackDuration: 0
-  knockbackTimer: 0

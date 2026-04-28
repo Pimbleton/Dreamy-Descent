@@ -4,6 +4,8 @@ public class PlayerHurt : MonoBehaviour {
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] private AudioClip playerHitSound;
+    [SerializeField] private AudioSource audioSource;
 
     private float invincibilityDuration;
     private bool isInvincible = false;
@@ -32,6 +34,10 @@ public class PlayerHurt : MonoBehaviour {
 
     public void PlayerTakeDamage(int damage) {
         if (!isInvincible && damage > 0) {
+            if (playerHitSound != null && audioSource != null) {
+                audioSource.PlayOneShot(playerHitSound, .75f);
+            }
+            
             playerStats.HP -= damage;
             isInvincible = true;
             healthBar.UpdateHealthBar();

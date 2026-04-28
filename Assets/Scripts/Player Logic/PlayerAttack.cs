@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerAttack : MonoBehaviour {
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private GameObject PlayerProjectilePrefab;
+    [SerializeField] private AudioClip spawnShot;
+    [SerializeField] private AudioSource audioSource;
 
     private float nextProjectileAvailability = 0f;
     
@@ -34,6 +36,8 @@ public class PlayerAttack : MonoBehaviour {
                 rb.linearVelocity = Vector2.left * playerStats.projectileSpeed;
             }
         }
+
+        audioSource.PlayOneShot(spawnShot, .75f);
 
         Destroy(bullet, playerStats.projectileRange);
     }

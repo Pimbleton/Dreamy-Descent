@@ -19,4 +19,4 @@ MonoBehaviour:
   projectileDamage: 1
   projectileRange: 1
   projectileSpeed: 5
-  movementSpeed: 1
+  movementSpeed: 2

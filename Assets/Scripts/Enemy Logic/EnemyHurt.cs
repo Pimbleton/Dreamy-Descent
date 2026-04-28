@@ -4,6 +4,9 @@ public class EnemyHurt : MonoBehaviour {
     [SerializeField] private Rigidbody2D enemyRigidBody;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    [SerializeField] private AudioClip enemyHitSound;
+    [SerializeField] private AudioSource audioSource;
+
     private IKnockbackable mainBehavior;
     private EnemyData enemyStats;
     private Color originalColor;
@@ -17,6 +20,12 @@ public class EnemyHurt : MonoBehaviour {
     public void EnemyTakeDamage(float amount, float knockbackForce, Vector3 sourcePosition) {
         // Reduce HP by player's projectile damage.
         enemyStats.HP -= amount;
+
+        // Generate hurt sound with a random pitch for variety.
+        if (enemyHitSound != null && audioSource != null) {
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
+            audioSource.PlayOneShot(enemyHitSound, .75f);
+        }
         
         // Destroy enemy if HP is fully depleted.
         if (enemyStats.HP <= 0) {
