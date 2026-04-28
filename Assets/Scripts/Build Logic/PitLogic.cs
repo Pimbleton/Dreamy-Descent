@@ -14,6 +14,8 @@ public class PitLogic : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
+        gameObject.GetComponent<Collider2D>().enabled = false;
+
         if (collision.CompareTag("Player")) {
             if (FloorGenerator.Instance.currentFloor == 5) {
                 audioSource.Stop();
@@ -23,22 +25,30 @@ public class PitLogic : MonoBehaviour {
                 CongratsUI.Instance.summonCongratsPopup();
                 Instance.StartCoroutine(Instance.CongratulatePlayer());
             } else {
-                // Pit entered, now incrementing to next floor.
-                FloorGenerator.Instance.currentFloor += 1;
-
-                audioSource.Stop();
-                audioSource.clip = Resources.Load<AudioClip>($"Sounds/Music/f{FloorGenerator.Instance.currentFloor}Music");
-                audioSource.Play();
-
-                // Sends player to center of "new" floor and centers camera there.
-                player.transform.position = Vector3.zero;
-                Camera.main.transform.position = new Vector3(0f, 0f, Camera.main.transform.position.z);
-
-                // Generate the new floor.
-                FloorGenerator.Instance.ResetFloor();
+                FloorTransition.Instance.StartCoroutine(FloorTransitionRoutine());
             }
-
         }
+    }
+
+    private IEnumerator FloorTransitionRoutine() {
+        // Start the Fade to black
+        yield return FloorTransition.Instance.StartCoroutine(FloorTransition.Instance.FadeOut());
+
+        // Perform the logic you already had (while the screen is black)
+        FloorGenerator.Instance.currentFloor += 1;
+
+        audioSource.Stop();
+        audioSource.clip = Resources.Load<AudioClip>($"Sounds/Music/f{FloorGenerator.Instance.currentFloor}Music");
+        audioSource.Play();
+
+        player.transform.position = Vector3.zero;
+        Camera.main.transform.position = new Vector3(0f, 0f, Camera.main.transform.position.z);
+
+        // Generate the new floor
+        FloorGenerator.Instance.ResetFloor();
+
+        // Fade back in
+        yield return FloorTransition.Instance.StartCoroutine(FloorTransition.Instance.FadeIn());
     }
 
     private IEnumerator CongratulatePlayer() {
