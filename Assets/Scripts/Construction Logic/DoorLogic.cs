@@ -29,11 +29,23 @@ public class DoorLogic : MonoBehaviour {
             switch (gameObject.name) {
                 case "W_Door":
                     targetRoom = westRoom;
-                    spawnPoint = new Vector3(westRoom.transform.position.x + 8f, westRoom.transform.position.y, 0f);
+ 
+                    if (westRoom.GetComponent<RoomAttributes>().roomType == "Boss") {
+                        spawnPoint = new Vector3(westRoom.transform.position.x, westRoom.transform.position.y - 3.9f, 0f);
+                    } else {
+                        spawnPoint = new Vector3(westRoom.transform.position.x + 8f, westRoom.transform.position.y, 0f);
+                    }
+
                     break;
                 case "E_Door":
                     targetRoom = eastRoom;
-                    spawnPoint = new Vector3(eastRoom.transform.position.x - 8f, eastRoom.transform.position.y, 0f);
+
+                    if (eastRoom.GetComponent<RoomAttributes>().roomType == "Boss") {
+                        spawnPoint = new Vector3(eastRoom.transform.position.x, eastRoom.transform.position.y - 3.9f, 0f);
+                    } else {
+                        spawnPoint = new Vector3(eastRoom.transform.position.x - 8f, eastRoom.transform.position.y, 0f);
+                    }
+
                     break;
                 case "N_Door":
                     targetRoom = northRoom;
@@ -41,7 +53,13 @@ public class DoorLogic : MonoBehaviour {
                     break;
                 case "S_Door":
                     targetRoom = southRoom;
-                    spawnPoint = new Vector3(southRoom.transform.position.x, southRoom.transform.position.y + 3.9f, 0f);
+
+                    if (southRoom.GetComponent<RoomAttributes>().roomType == "Boss") {
+                        spawnPoint = new Vector3(southRoom.transform.position.x, southRoom.transform.position.y - 3.9f, 0f);
+                    } else {
+                        spawnPoint = new Vector3(southRoom.transform.position.x, southRoom.transform.position.y + 3.9f, 0f);
+                    }
+
                     break;
             }
 

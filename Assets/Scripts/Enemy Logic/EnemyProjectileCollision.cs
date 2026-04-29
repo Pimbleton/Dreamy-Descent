@@ -13,9 +13,9 @@ public class EnemyProjectileCollision : MonoBehaviour {
                     hurtScript.PlayerTakeDamage(enemyStats.GetStats().projectileDamage);
                 }
                 break;
-            case "Projectile Walls":
-                Destroy(gameObject);
-                break;
+             case "Projectile Walls":
+                 Destroy(gameObject);
+                 break;
         }
     }
 }
