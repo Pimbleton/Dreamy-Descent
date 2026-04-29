@@ -22,8 +22,8 @@ public class AquariusBehavior : MonoBehaviour, IEnemyStats {
     [SerializeField] private GameObject rainBoltPrefab;
     [SerializeField] private GameObject bubblePrefab;
     private float cooldownEndTime = 0f;
-    private float nextRainBolt = 0f;
-    private float nextUniqueAttackChance = 0f;
+    private float nextRainBolt;
+    private float nextUniqueAttackChance;
 
     void Awake() {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -37,6 +37,11 @@ public class AquariusBehavior : MonoBehaviour, IEnemyStats {
         // Subtract a small margin (e.g., 2 units) so the boss doesn't hit the walls
         leftBound = centerX - (roomWidth / 2) + 2f;
         rightBound = centerX + (roomWidth / 2) - 2f;
+    }
+
+    void OnEnable() {
+        nextUniqueAttackChance = Time.time + 5f;
+        nextRainBolt = Time.time + 2f;
     }
 
     void FixedUpdate() {

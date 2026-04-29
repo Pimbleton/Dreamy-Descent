@@ -150,8 +150,9 @@ public class FloorGenerator : MonoBehaviour {
 
         switch (type) {
             case "Boss":
-                string bossName = PickBoss.pickBoss(currentFloor);
-                newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/Rooms/Floor{currentFloor}/" + bossName + "_Room"), spawnPos, Quaternion.identity);
+                //string bossName = PickBoss.pickBoss(currentFloor);
+                //newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/Rooms/Floor{currentFloor}/" + bossName + "_Room"), spawnPos, Quaternion.identity);
+                newRoom = Instantiate(Resources.Load<GameObject>($"Prefabs/Rooms/Floor1/Aquarius_Room"), spawnPos, Quaternion.identity);
                 EnemySpawner.Instance.SpawnBoss(newRoom.transform);
                 break;
             case "Item":

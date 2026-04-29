@@ -14,11 +14,16 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     public void PopulateRoom(GameObject room) {
-        // Determine number of enemies, ranging from 0 to 3 enemies in a room.
-        int spawnCount = Random.Range(0, 4);
+        int randValue = Random.Range(0, 101);
+        int naturalClearNumber = 10;
 
-        // Actually spawn the enemies.
-        for (int i = 0; i < spawnCount; i++) SpawnEnemy(room.transform);
+        if (randValue > naturalClearNumber) {
+            // Determine number of enemies, ranging from 1 to 3 enemies in a room.
+            int spawnCount = Random.Range(1, 4);
+
+            // Actually spawn the enemies.
+            for (int i = 0; i < spawnCount; i++) SpawnEnemy(room.transform);
+        }
     }
 
     private void SpawnEnemy(Transform roomParent) {
