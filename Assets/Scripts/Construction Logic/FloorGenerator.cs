@@ -115,6 +115,12 @@ public class FloorGenerator : MonoBehaviour {
                 continue;
             }
 
+            if (type == "Boss") {
+                if (Mathf.Abs(pos.x) + Mathf.Abs(pos.y) == 1) {
+                    continue; 
+                }
+            }
+
             // Count neighbors to find dead ends by checking each cardinal direction.
             int neighborCount = 0;
             if (spawnedRooms.ContainsKey(pos + Vector2Int.up)) neighborCount++;

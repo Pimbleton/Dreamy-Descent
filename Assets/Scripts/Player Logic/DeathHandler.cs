@@ -25,7 +25,7 @@ public class DeathHandler : MonoBehaviour {
         Time.timeScale = 0f;
 
         // Wait for 5 real-time seconds
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(7f);
 
         // Resume time
         Time.timeScale = 1f;
