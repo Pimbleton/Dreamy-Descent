@@ -14,6 +14,7 @@ public class FloorGenerator : MonoBehaviour {
 
     void Start() {
         Instance = this;
+        Time.timeScale = 1f;
         currentFloor = 1;
         spawnedRooms = new Dictionary<Vector2Int, GameObject>();
 
