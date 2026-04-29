@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d185e8d56b67c6042ad9b79b29089070, type: 3}
+  m_Name: aquariusStats
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Aquarius
+  HP: 50
+  maxHP: 50
+  contactDamage: 1
+  projectileDamage: 1
+  projectileRange: 5
+  projectileSpeed: 5
+  movementSpeed: 5
